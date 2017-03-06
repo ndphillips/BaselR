@@ -338,31 +338,31 @@ plot(heart.fft, main = "Heart Disease",
      decision.names = c("healthy", "sick"), data = "test", tree = 6)
 ```
 
---- .class #id 
-## How do FFTs compare to regression and CART?
+<!-- --- .class #id  -->
+<!-- ## How do FFTs compare to regression and CART? -->
 
-- Simplicity: *How much information is used and how is it combined?*
-- Accuracy: *How well can the algorithm predict new data?*
+<!-- - Simplicity: *How much information is used and how is it combined?* -->
+<!-- - Accuracy: *How well can the algorithm predict new data?* -->
 
---- .class #id 
-## Heart disease: regression
-- 4 significant cues: (sex, cp, trestbps, ca)
+<!-- --- .class #id  -->
+<!-- ## Heart disease: regression -->
+<!-- - 4 significant cues: (sex, cp, trestbps, ca) -->
 
-```{r echo = FALSE, fig.width = 10, fig.height = 6, fig.align = 'center'}
-heart.lm <- glm(diagnosis ~., data = heartdisease, family = "binomial")
-#heart.lm$coefficients
-#summary(heart.lm)$coefficients
+<!-- ```{r echo = FALSE, fig.width = 10, fig.height = 6, fig.align = 'center'} -->
+<!-- heart.lm <- glm(diagnosis ~., data = heartdisease, family = "binomial") -->
+<!-- #heart.lm$coefficients -->
+<!-- #summary(heart.lm)$coefficients -->
 
-bar.cols <- rep("white", nrow(summary(heart.lm)$coefficients))
-bar.cols[summary(heart.lm)$coefficients[,4] < .05] <- yarrr::piratepal("basel", trans = .6, length.out = sum(summary(heart.lm)$coefficients[,4] < .05))
+<!-- bar.cols <- rep("white", nrow(summary(heart.lm)$coefficients)) -->
+<!-- bar.cols[summary(heart.lm)$coefficients[,4] < .05] <- yarrr::piratepal("basel", trans = .6, length.out = sum(summary(heart.lm)$coefficients[,4] < .05)) -->
 
-barplot(height = abs(summary(heart.lm)$coefficients[,3]), 
-        names.arg = rownames(summary(heart.lm)$coefficients),
-        col = bar.cols, ylab = "Coefficient z-scores", main = "Heart Disease logistic regression")
+<!-- barplot(height = abs(summary(heart.lm)$coefficients[,3]),  -->
+<!--         names.arg = rownames(summary(heart.lm)$coefficients), -->
+<!--         col = bar.cols, ylab = "Coefficient z-scores", main = "Heart Disease logistic regression") -->
 
-abline(h = 1.96)
+<!-- abline(h = 1.96) -->
 
-```
+<!-- ``` -->
 
 --- .class #id 
 ## Heart disease: rpart
@@ -387,29 +387,29 @@ plot(heart.fft, stats = FALSE, decision.names = c("Healthy", "Diseased"))
 ```
 
 
---- .class #id 
-## Heart disease classification accuracy
+<!-- --- .class #id  -->
+<!-- ## Heart disease classification accuracy -->
 
-```{r, echo = FALSE,  fig.align = 'center', out.width = "80%", message = FALSE, results = "hide"}
-heart.sim <- data.frame(model = c(rep("FFT", 100), 
-                                  rep("LR", 100), 
-                                  rep("CART", 100)),
-                        data = c(rep("train", 300), rep("test", 300)),
-                        bacc = c(heart.fff$tree.sim$bacc.train,
-                                          heart.fff$lr.sim$bacc.train,
-                                          heart.fff$cart.sim$bacc.train,
-                                 heart.fff$tree.sim$bacc.test,
-                                          heart.fff$lr.sim$bacc.test,
-                                          heart.fff$cart.sim$bacc.test))
-```
+<!-- ```{r, echo = FALSE,  fig.align = 'center', out.width = "80%", message = FALSE, results = "hide"} -->
+<!-- heart.sim <- data.frame(model = c(rep("FFT", 100),  -->
+<!--                                   rep("LR", 100),  -->
+<!--                                   rep("CART", 100)), -->
+<!--                         data = c(rep("train", 300), rep("test", 300)), -->
+<!--                         bacc = c(heart.fff$tree.sim$bacc.train, -->
+<!--                                           heart.fff$lr.sim$bacc.train, -->
+<!--                                           heart.fff$cart.sim$bacc.train, -->
+<!--                                  heart.fff$tree.sim$bacc.test, -->
+<!--                                           heart.fff$lr.sim$bacc.test, -->
+<!--                                           heart.fff$cart.sim$bacc.test)) -->
+<!-- ``` -->
 
 
-```{r, echo = FALSE,  fig.align = 'center', fig.width = 10, fig.height = 7, message = FALSE, results = "hide"}
-yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(.6, 1), sortx = "s", main = "Simulation performance in Heart disease", ylab = "Balanced Accuracy (bacc)", yaxt = "n", gl.col = "white")
-axis(side = 2, at = seq(.6, 1, .1), las = 1)
-rect(-1000, -1000, 10000, 1000, col = "white", border = NA)
-grid()
-```
+<!-- ```{r, echo = FALSE,  fig.align = 'center', fig.width = 10, fig.height = 7, message = FALSE, results = "hide"} -->
+<!-- yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(.6, 1), sortx = "s", main = "Simulation performance in Heart disease", ylab = "Balanced Accuracy (bacc)", yaxt = "n", gl.col = "white") -->
+<!-- axis(side = 2, at = seq(.6, 1, .1), las = 1) -->
+<!-- rect(-1000, -1000, 10000, 1000, col = "white", border = NA) -->
+<!-- grid() -->
+<!-- ``` -->
 
 
 
@@ -514,3 +514,12 @@ plot(heart.fft,
      main = "Heart Disease", 
      decision.names = c("healthy", "sick"))
 ```
+
+
+--- .class #id 
+## FFForest()
+
+```{r, fig.width = 12, fig.height = 7, fig.align = 'center'}
+plot(heart.fff)
+```
+

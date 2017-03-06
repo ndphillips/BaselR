@@ -339,24 +339,38 @@ plot(heart.fft,
 
 <img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 
---- .class #id 
-## How do FFTs compare to regression and CART?
+<!-- --- .class #id  -->
+<!-- ## How do FFTs compare to regression and CART? -->
 
-- Simplicity: *How much information is used and how is it combined?*
-- Accuracy: *How well can the algorithm predict new data?*
+<!-- - Simplicity: *How much information is used and how is it combined?* -->
+<!-- - Accuracy: *How well can the algorithm predict new data?* -->
 
---- .class #id 
-## Heart disease: regression
-- 4 significant cues: (sex, cp, trestbps, ca)
+<!-- --- .class #id  -->
+<!-- ## Heart disease: regression -->
+<!-- - 4 significant cues: (sex, cp, trestbps, ca) -->
 
-<img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
+<!-- ```{r echo = FALSE, fig.width = 10, fig.height = 6, fig.align = 'center'} -->
+<!-- heart.lm <- glm(diagnosis ~., data = heartdisease, family = "binomial") -->
+<!-- #heart.lm$coefficients -->
+<!-- #summary(heart.lm)$coefficients -->
+
+<!-- bar.cols <- rep("white", nrow(summary(heart.lm)$coefficients)) -->
+<!-- bar.cols[summary(heart.lm)$coefficients[,4] < .05] <- yarrr::piratepal("basel", trans = .6, length.out = sum(summary(heart.lm)$coefficients[,4] < .05)) -->
+
+<!-- barplot(height = abs(summary(heart.lm)$coefficients[,3]),  -->
+<!--         names.arg = rownames(summary(heart.lm)$coefficients), -->
+<!--         col = bar.cols, ylab = "Coefficient z-scores", main = "Heart Disease logistic regression") -->
+
+<!-- abline(h = 1.96) -->
+
+<!-- ``` -->
 
 --- .class #id 
 ## Heart disease: rpart
 
 - 8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)
 
-<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="50%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="50%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -365,29 +379,71 @@ plot(heart.fft,
 - 3 cues (thal, cp, ca)
 - However, when applied to the data, only about 1.75 cues are even used on average. As a result, > 85% of the cue information is completely ignored.
 
-<img src="figure/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" />
+
+
+<!-- --- .class #id  -->
+<!-- ## Heart disease classification accuracy -->
+
+<!-- ```{r, echo = FALSE,  fig.align = 'center', out.width = "80%", message = FALSE, results = "hide"} -->
+<!-- heart.sim <- data.frame(model = c(rep("FFT", 100),  -->
+<!--                                   rep("LR", 100),  -->
+<!--                                   rep("CART", 100)), -->
+<!--                         data = c(rep("train", 300), rep("test", 300)), -->
+<!--                         bacc = c(heart.fff$tree.sim$bacc.train, -->
+<!--                                           heart.fff$lr.sim$bacc.train, -->
+<!--                                           heart.fff$cart.sim$bacc.train, -->
+<!--                                  heart.fff$tree.sim$bacc.test, -->
+<!--                                           heart.fff$lr.sim$bacc.test, -->
+<!--                                           heart.fff$cart.sim$bacc.test)) -->
+<!-- ``` -->
+
+
+<!-- ```{r, echo = FALSE,  fig.align = 'center', fig.width = 10, fig.height = 7, message = FALSE, results = "hide"} -->
+<!-- yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(.6, 1), sortx = "s", main = "Simulation performance in Heart disease", ylab = "Balanced Accuracy (bacc)", yaxt = "n", gl.col = "white") -->
+<!-- axis(side = 2, at = seq(.6, 1, .1), las = 1) -->
+<!-- rect(-1000, -1000, 10000, 1000, col = "white", border = NA) -->
+<!-- grid() -->
+<!-- ``` -->
+
 
 
 --- .class #id 
 ## Heart disease classification accuracy
 
 
+```
+## Error in yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(0.6, : object 'heart.sim' not found
+```
 
+```
+## Error in axis(side = 2, at = seq(0.6, 1, 0.1), las = 1): plot.new has not been called yet
+```
 
-<img src="figure/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" />
+```
+## Error in rect(4, -1000, 10000, 1000, col = "white", border = NA): plot.new has not been called yet
+```
 
-
+```
+## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
+```
 
 --- .class #id 
 ## Heart disease classification accuracy
 
-<img src="figure/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" style="display: block; margin: auto;" />
-
---- .class #id 
-## Heart disease classification accuracy
 
 
-<img src="figure/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" />
+```
+## Error in yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(0.6, : object 'heart.sim' not found
+```
+
+```
+## Error in axis(side = 2, at = seq(0.6, 1, 0.1), las = 1): plot.new has not been called yet
+```
+
+```
+## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
+```
 
 
 --- .class #id 
@@ -410,24 +466,24 @@ Table: 5 of the 10 prediction datasets
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="90%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="90%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="90%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Simulation prediction results by dataset
 
-<img src="images/simulation.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulation.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="90%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -450,9 +506,21 @@ Table: 5 of the 10 prediction datasets
 
 *** =right
 
-<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="100%" style="display: block; margin: auto;" />
+<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="100%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Questions?
 
-<img src="figure/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" />
+
+
+--- .class #id 
+## FFForest()
+
+
+```r
+plot(heart.fff)
+```
+
+<img src="figure/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" />
+
