@@ -201,20 +201,20 @@ head(heartdisease)
 ```
 
 ```
-##   age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope ca
-## 1  63   1 ta      145  233   1 hypertrophy     150     0     2.3  down  0
-## 2  67   1  a      160  286   0 hypertrophy     108     1     1.5  flat  3
-## 3  67   1  a      120  229   0 hypertrophy     129     1     2.6  flat  2
-## 4  37   1 np      130  250   0      normal     187     0     3.5  down  0
-## 5  41   0 aa      130  204   0 hypertrophy     172     0     1.4    up  0
-## 6  56   1 aa      120  236   0      normal     178     0     0.8    up  0
-##     thal diagnosis
-## 1     fd         0
-## 2 normal         1
-## 3     rd         1
-## 4 normal         0
-## 5 normal         0
-## 6 normal         0
+##     age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope
+## 18   54   1  a      140  239   0      normal     160     0     1.2    up
+## 283  55   0  a      128  205   0    abnormal     130     1     2.0  flat
+## 66   60   1  a      145  282   0 hypertrophy     142     1     2.8  flat
+## 26   50   0 np      120  219   0      normal     158     0     1.6  flat
+## 95   63   0 np      135  252   0 hypertrophy     172     0     0.0    up
+## 248  47   1  a      110  275   0 hypertrophy     118     1     1.0  flat
+##     ca   thal diagnosis
+## 18   0 normal         0
+## 283  1     rd         1
+## 66   2     rd         1
+## 26   0 normal         0
+## 95   0 normal         0
+## 248  1 normal         1
 ```
 
 --- .class #id 
@@ -255,15 +255,15 @@ heart.fft
 
 ```
 ## [1] "7 FFTs using up to 4 of 13 cues"
-## [1] "FFT #4 uses 3 cues {thal,cp,ca} with the following performance:"
+## [1] "FFT #5 uses 4 cues {thal,cp,oldpeak,slope} with the following performance:"
 ##       train   test
 ## n    150.00 153.00
-## pci    0.88   0.88
-## mcu    1.74   1.73
-## acc    0.80   0.82
-## bacc   0.80   0.82
-## sens   0.82   0.88
-## spec   0.79   0.76
+## pci    0.87   0.87
+## mcu    1.87   1.80
+## acc    0.81   0.73
+## bacc   0.82   0.74
+## sens   0.84   0.87
+## spec   0.79   0.61
 ```
 
 --- .class #id 
@@ -342,14 +342,14 @@ plot(heart.fft, main = "Heart Disease",
 ## Heart disease: regression
 - 4 significant cues: (sex, cp, trestbps, ca)
 
-<img src="figure/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Heart disease: rpart
 
 - 8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)
 
-<img src="figure/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="50%" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="50%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -358,7 +358,7 @@ plot(heart.fft, main = "Heart Disease",
 - 3 cues (thal, cp, ca)
 - However, when applied to the data, only about 1.75 cues are even used on average. As a result, > 85% of the cue information is completely ignored.
 
-<img src="figure/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" />
 
 
 --- .class #id 
