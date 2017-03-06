@@ -312,6 +312,15 @@ knitr::include_graphics(c("images/roc.png"))
 
 
 --- .class #id 
+## Heart Disease FFT | Tree 4
+
+```{r, eval = TRUE, echo = FALSE, fig.align = "center", fig.width = 8, fig.height = 7}
+plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"), data = "test")
+```
+
+
+
+--- .class #id 
 ## Heart Disease FFT | Tree 3
 
 ```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide", fig.width = 8, fig.height = 7}
