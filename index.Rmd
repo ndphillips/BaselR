@@ -68,7 +68,7 @@ knitr::include_graphics(c("images/crowdedemergency.jpg"))
 
 --- .class #id 
 
-## Intuition based on clinical expertise was not working.
+## Decisions by intuition was not working
 
 ### Study: How much do doctors agree on diagnoses?
 
@@ -83,7 +83,7 @@ knitr::include_graphics(c("images/medicalhistory.jpg"))
 
 ## Conclusion: Terribly low agreement
 
-### "In each case the answers we got pretty much ranged from 0 to 100. It was extraordinary" (Brenden Reilly, Department of Medicine chairman)
+"In each case the answers we got pretty much ranged from 0 to 100. It was extraordinary" (Brenden Reilly, Department of Medicine chairman)
 
 
 
@@ -284,10 +284,10 @@ plot(heart.fft,
      decision.names = c("healthy", "sick"))
 ```
 
-### Wait for it...
+...
 
 --- .class #id 
-## Heart Disease FFT - Training
+## Heart Disease FFT | Training
 ```{r, eval = TRUE, echo = FALSE, fig.align = "center", fig.width = 8, fig.height = 7}
 plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"))
 ```
@@ -295,14 +295,24 @@ plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"))
 
 
 --- .class #id 
-## Heart Disease FFT - Prediction
+## Heart Disease FFT | Prediction
 
 ```{r, eval = TRUE, echo = FALSE, fig.align = "center", fig.width = 8, fig.height = 7}
 plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"), data = "test")
 ```
 
+
 --- .class #id 
-## Heart Disease FFT - Tree 3
+## Heart Disease FFT | ROC
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "80%", fig.align='center'}
+knitr::include_graphics(c("images/roc.png"))
+```
+
+
+
+--- .class #id 
+## Heart Disease FFT | Tree 3
 
 ```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide", fig.width = 8, fig.height = 7}
 
@@ -311,7 +321,7 @@ plot(heart.fft, main = "Heart Disease",
 ```
 
 --- .class #id
-## Heart Disease FFT - Tree 6
+## Heart Disease FFT | Tree 6
 
 ```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide", fig.width = 8, fig.height = 7}
 
