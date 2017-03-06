@@ -91,7 +91,7 @@ knitr::include_graphics(c("images/medicalhistory.jpg"))
 
 ## Solution
 
-> - A decision tree developed by a cardiologist named Lee Goldman.
+- A decision tree developed by a cardiologist named Lee Goldman.
 
 ```{r , fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center'}
 knitr::include_graphics(c("images/cooktree.gif"))
