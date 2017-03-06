@@ -81,14 +81,14 @@ biglogo : FFTrees_Logo.jpg
 
 ## Solution
 
-- A decision tree developed by a cardiologist named Lee Goldman.
+> - A decision tree developed by a cardiologist named Lee Goldman.
 
 <img src="images/cooktree.gif" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="30%" style="display: block; margin: auto;" />
 
 
 ### Why use a decision tree?
 
-- Speed, Easy of understanding and implementation
+> - Speed, Easy of understanding and implementation
 
 
 
@@ -100,13 +100,13 @@ biglogo : FFTrees_Logo.jpg
 
 ## The Cook hospital decision tree
 
-- Over two years, the performance of the tree was compared to the physician's intuitive judgments.
+> - Over two years, the performance of the tree was compared to the physician's intuitive judgments.
 
 ### Results
 
-- Tree dramatically outperformed the doctor's clinical judgments and resulted in far fewer false-positives and huge cost savings
+> - Tree dramatically outperformed the doctor's clinical judgments and resulted in far fewer false-positives and huge cost savings
 
-- To this day, the tree is still used at the hospital.
+> - To this day, the tree is still used at the hospital.
 
 *** =right
 
@@ -118,15 +118,15 @@ biglogo : FFTrees_Logo.jpg
 *** =left
 ## Fast and frugal decision trees (FFT)
 
-- A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree.
+> - A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree.
 
-- In an FFT, each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
+> - In an FFT, each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
 
-- Because of their restrictions, FFTs are even faster and require less information than non-FFT trees.
+> - FFTs are even faster and require less information than non-FFT trees.
 
 *** =right
 
-<img src="images/traintreestats.pdf" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="100%" style="display: block; margin: auto;" />
+<img src="images/traintreestats.png" title="plot of chunk test" alt="plot of chunk test" width="100%" style="display: block; margin: auto;" />
 
 --- .class #id 
 
@@ -134,7 +134,7 @@ biglogo : FFTrees_Logo.jpg
 
 - Jenny et al. (2013): Simple rules for detecting depression
 
-<img src="images/depressiontree.pdf" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="40%" style="display: block; margin: auto;" />
+<img src="images/depressiontree.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="40%" style="display: block; margin: auto;" />
 
 --- .class #id 
 
@@ -142,7 +142,7 @@ biglogo : FFTrees_Logo.jpg
 
 - Neth et al. (2013): Homo heuristics in the financial world: From risk management to managing uncertainty
 
-<img src="images/nethtree.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="40%" style="display: block; margin: auto;" />
+<img src="images/nethtree.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="40%" style="display: block; margin: auto;" />
 
 <!-- --- &twocol -->
 
@@ -177,7 +177,7 @@ There is no off-the-shelf method to construct FFTs
 ### Task
 - Create an easy-to-use R package that constructs, visualizes, and implements FFTs called `FFTrees`.
 
-<img src="images/FFTrees_Logo.jpg" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="40%" style="display: block; margin: auto;" />
+<img src="images/FFTrees_Logo.jpg" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="40%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## FFTrees
@@ -201,20 +201,20 @@ head(heartdisease)
 ```
 
 ```
-##     age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope
-## 18   54   1  a      140  239   0      normal     160     0     1.2    up
-## 283  55   0  a      128  205   0    abnormal     130     1     2.0  flat
-## 66   60   1  a      145  282   0 hypertrophy     142     1     2.8  flat
-## 26   50   0 np      120  219   0      normal     158     0     1.6  flat
-## 95   63   0 np      135  252   0 hypertrophy     172     0     0.0    up
-## 248  47   1  a      110  275   0 hypertrophy     118     1     1.0  flat
-##     ca   thal diagnosis
-## 18   0 normal         0
-## 283  1     rd         1
-## 66   2     rd         1
-## 26   0 normal         0
-## 95   0 normal         0
-## 248  1 normal         1
+##   age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope ca
+## 1  63   1 ta      145  233   1 hypertrophy     150     0     2.3  down  0
+## 2  67   1  a      160  286   0 hypertrophy     108     1     1.5  flat  3
+## 3  67   1  a      120  229   0 hypertrophy     129     1     2.6  flat  2
+## 4  37   1 np      130  250   0      normal     187     0     3.5  down  0
+## 5  41   0 aa      130  204   0 hypertrophy     172     0     1.4    up  0
+## 6  56   1 aa      120  236   0      normal     178     0     0.8    up  0
+##     thal diagnosis
+## 1     fd         0
+## 2 normal         1
+## 3     rd         1
+## 4 normal         0
+## 5 normal         0
+## 6 normal         0
 ```
 
 --- .class #id 
@@ -239,7 +239,7 @@ heart.fft <- FFTrees(formula = diagnosis ~.,
 ## Evaluating a decision algorithm
 
 
-<img src="images/confusiontable.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="60%" style="display: block; margin: auto;" />
+<img src="images/confusiontable.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="60%" style="display: block; margin: auto;" />
 
 
 
@@ -255,15 +255,15 @@ heart.fft
 
 ```
 ## [1] "7 FFTs using up to 4 of 13 cues"
-## [1] "FFT #5 uses 4 cues {thal,cp,oldpeak,slope} with the following performance:"
+## [1] "FFT #4 uses 3 cues {thal,cp,ca} with the following performance:"
 ##       train   test
 ## n    150.00 153.00
-## pci    0.87   0.87
-## mcu    1.87   1.80
-## acc    0.81   0.73
-## bacc   0.82   0.74
-## sens   0.84   0.87
-## spec   0.79   0.61
+## pci    0.88   0.88
+## mcu    1.74   1.73
+## acc    0.80   0.82
+## bacc   0.80   0.82
+## sens   0.82   0.88
+## spec   0.79   0.76
 ```
 
 --- .class #id 
@@ -271,66 +271,56 @@ heart.fft
 
 
 
-
 ```r
 plot(heart.fft, what = "cues", main = "Heart Disease")
 ```
 
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png)
 
-<img src="images/cues.pdf" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="65%" style="display: block; margin: auto;" />
+--- .class #id 
+## Heart Disease FFT
+
+```r
+plot(heart.fft, 
+     main = "Heart Disease", 
+     decision.names = c("healthy", "sick"),
+     stats = FALSE)
+```
+
+<img src="figure/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Heart Disease FFT
 
 ```r
-plot(heart.fft, main = "Heart Disease", 
-     decision.names = c("healthy", "sick"),
-     stats = FALSE)
+plot(heart.fft, 
+     main = "Heart Disease", 
+     decision.names = c("healthy", "sick"))
 ```
 
-
-
-
-
-<img src="images/traintreestats.pdf" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="60%" style="display: block; margin: auto;" />
-
+### Wait for it...
 
 --- .class #id 
 ## Heart Disease FFT - Training
-
-
-
-
-
-
-<img src="images/traintree.pdf" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="65%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT - Prediction
 
-
-
-<img src="images/testtree.pdf" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="65%" style="display: block; margin: auto;" />
-
+<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Heart Disease FFT - Tree 3
 
-
-
-<img src="images/testtree3.pdf" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="65%" style="display: block; margin: auto;" />
-
+<img src="figure/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
 
 --- .class #id
 ## Heart Disease FFT - Tree 6
 
-
-
-<img src="images/testtree6.pdf" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="65%" style="display: block; margin: auto;" />
-
+<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## How do FFTs compare to regression and CART?
@@ -342,14 +332,14 @@ plot(heart.fft, main = "Heart Disease",
 ## Heart disease: regression
 - 4 significant cues: (sex, cp, trestbps, ca)
 
-<img src="assets/fig/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Heart disease: rpart
 
 - 8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)
 
-<img src="assets/fig/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="50%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="50%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -358,7 +348,7 @@ plot(heart.fft, main = "Heart Disease",
 - 3 cues (thal, cp, ca)
 - However, when applied to the data, only about 1.75 cues are even used on average. As a result, > 85% of the cue information is completely ignored.
 
-<img src="assets/fig/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -367,30 +357,21 @@ plot(heart.fft, main = "Heart Disease",
 
 
 
+<img src="figure/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" />
 
-
-
-<img src="images/ppa.pdf" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="70%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Heart disease classification accuracy
 
-
-
-
-
-<img src="images/ppb.pdf" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="70%" style="display: block; margin: auto;" />
-
+<img src="figure/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Heart disease classification accuracy
 
 
+<img src="figure/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" />
 
-
-
-<img src="images/ppc.pdf" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="70%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## How accurate are FFTs built by FFTrees?
@@ -412,24 +393,24 @@ Table: 5 of the 10 prediction datasets
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_a.pdf" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="90%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_b.pdf" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="90%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_c.pdf" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="90%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Simulation prediction results by dataset
 
-<img src="images/simulation.pdf" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulation.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="90%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -452,37 +433,9 @@ Table: 5 of the 10 prediction datasets
 
 *** =right
 
-<img src="images/traintreestats.pdf" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="100%" style="display: block; margin: auto;" />
+<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="100%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Questions?
 
-<img src="images/testtree.pdf" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" width="65%" style="display: block; margin: auto;" />
-
-
-
-
---- .class #id 
-## Tree construction algorithm
-
-| Step| Time|
-|:------|:----|
-|     1. Decision threshold for each cue|    |
-|     2. Select cues|    2|
-|     3. Order cues|    4|
-|     4. Exit branch|    6|
-
-
-
-
---- .class #id 
-## Exploring trees with FFForest()
-
-- The `FFForest()` function will create a forest of FFTs by creating trees from random subsets of the data.
-
-- You can then extrapolate cue importance and co-occurence from an `FFForest` object:
-
-
-
-<img src="images/heartforest.pdf" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" width="80%" style="display: block; margin: auto;" />
-
+<img src="figure/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" />
