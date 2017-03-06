@@ -201,20 +201,20 @@ head(heartdisease)
 ```
 
 ```
-##   age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope ca
-## 1  63   1 ta      145  233   1 hypertrophy     150     0     2.3  down  0
-## 2  67   1  a      160  286   0 hypertrophy     108     1     1.5  flat  3
-## 3  67   1  a      120  229   0 hypertrophy     129     1     2.6  flat  2
-## 4  37   1 np      130  250   0      normal     187     0     3.5  down  0
-## 5  41   0 aa      130  204   0 hypertrophy     172     0     1.4    up  0
-## 6  56   1 aa      120  236   0      normal     178     0     0.8    up  0
-##     thal diagnosis
-## 1     fd         0
-## 2 normal         1
-## 3     rd         1
-## 4 normal         0
-## 5 normal         0
-## 6 normal         0
+##     age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope
+## 138  62   1 aa      120  281   0 hypertrophy     103     0     1.4  flat
+## 250  62   1 aa      128  208   1 hypertrophy     140     0     0.0    up
+## 260  57   1 aa      124  261   0      normal     141     0     0.3    up
+## 173  59   0  a      174  249   0      normal     143     1     0.0  flat
+## 105  49   1 np      120  188   0      normal     139     0     2.0  flat
+## 19   48   0 np      130  275   0      normal     139     0     0.2    up
+##     ca   thal diagnosis
+## 138  1     rd         1
+## 250  0 normal         0
+## 260  0     rd         1
+## 173  0 normal         1
+## 105  3     rd         1
+## 19   0 normal         0
 ```
 
 --- .class #id 
@@ -255,15 +255,15 @@ heart.fft
 
 ```
 ## [1] "7 FFTs using up to 4 of 13 cues"
-## [1] "FFT #4 uses 3 cues {thal,cp,ca} with the following performance:"
+## [1] "FFT #3 uses 4 cues {thal,ca,cp,oldpeak} with the following performance:"
 ##       train   test
 ## n    150.00 153.00
-## pci    0.88   0.88
-## mcu    1.74   1.73
-## acc    0.80   0.82
-## bacc   0.80   0.82
-## sens   0.82   0.88
-## spec   0.79   0.76
+## pci    0.87   0.88
+## mcu    1.87   1.62
+## acc    0.81   0.80
+## bacc   0.79   0.79
+## sens   0.63   0.63
+## spec   0.95   0.94
 ```
 
 --- .class #id 
@@ -275,7 +275,7 @@ heart.fft
 plot(heart.fft, what = "cues", main = "Heart Disease")
 ```
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-14](assets/fig/unnamed-chunk-14-1.png)
 
 --- .class #id 
 ## Heart Disease FFT
@@ -287,7 +287,7 @@ plot(heart.fft,
      stats = FALSE)
 ```
 
-<img src="figure/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -303,24 +303,24 @@ plot(heart.fft,
 
 --- .class #id 
 ## Heart Disease FFT - Training
-<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT - Prediction
 
-<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Heart Disease FFT - Tree 3
 
-<img src="figure/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
 
 --- .class #id
 ## Heart Disease FFT - Tree 6
 
-<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## How do FFTs compare to regression and CART?
@@ -332,14 +332,14 @@ plot(heart.fft,
 ## Heart disease: regression
 - 4 significant cues: (sex, cp, trestbps, ca)
 
-<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Heart disease: rpart
 
 - 8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)
 
-<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="50%" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="50%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -348,7 +348,7 @@ plot(heart.fft,
 - 3 cues (thal, cp, ca)
 - However, when applied to the data, only about 1.75 cues are even used on average. As a result, > 85% of the cue information is completely ignored.
 
-<img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -357,20 +357,20 @@ plot(heart.fft,
 
 
 
-<img src="figure/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart disease classification accuracy
 
-<img src="figure/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Heart disease classification accuracy
 
 
-<img src="figure/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -438,4 +438,4 @@ Table: 5 of the 10 prediction datasets
 --- .class #id 
 ## Questions?
 
-<img src="figure/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" />
