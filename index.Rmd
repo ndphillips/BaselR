@@ -205,8 +205,10 @@ knitr::include_graphics(c("images/FFTrees_Logo.jpg"))
 ## FFTrees
 
 ```{r, eval = FALSE}
-# Available on CRAN
+# v1.1.8 available on CRAN
 install.packages("FFTrees")
+
+# v1.2.0 on github
 devtools::github("ndphillips/FFTrees", include_vignette = TRUE)
 ```
 
