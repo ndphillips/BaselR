@@ -274,15 +274,28 @@ heart.fft <- FFTrees(formula = diagnosis ~.,
 heart.fft
 ```
 
---- .class #id 
+--- &twocol
+
+*** =left
+
 ## Heart Disease FFT
-```{r, eval = TRUE, fig.align = 'center'}
-plot(heart.fft, 
-     main = "Heart Disease", 
-     decision.names = c("healthy", "sick"),
-     stats = FALSE)
+```{r, eval = TRUE, fig.align = 'center', echo = FALSE}
+plot(heart.fft, main = "Heart Disease", 
+     decision.names = c("Healthy", "Diseased"), stats = FALSE)
 ```
 
+
+
+*** =right
+
+### 3 cues
+
+
+| cue| description|values |
+|:------|:----|:-----|
+|     `thal`|    thallium scintigraphy, a nuclear imaging test that shows how well blood flows into the heart.|normal (n), indicate a fixed defect (fd), or a reversible defect (rd)     |
+|     `cp`|    Chest pain type| Typical angina (ta), atypical angina (aa), non-anginal pain (np), or asymptomatic (a)     |
+|     `ca`| Number of major vessels colored by flourosopy, a continuous x-ray imaging tool|0, 1, 2 or 3 |
 
 
 --- .class #id 

@@ -282,18 +282,25 @@ heart.fft
 ## spec   0.79   0.76
 ```
 
---- .class #id 
+--- &twocol
+
+*** =left
+
 ## Heart Disease FFT
-
-```r
-plot(heart.fft, 
-     main = "Heart Disease", 
-     decision.names = c("healthy", "sick"),
-     stats = FALSE)
-```
-
 <img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
 
+
+
+*** =right
+
+### 3 cues
+
+
+| cue| description|values |
+|:------|:----|:-----|
+|     `thal`|    thallium scintigraphy, a nuclear imaging test that shows how well blood flows into the heart.|normal (n), indicate a fixed defect (fd), or a reversible defect (rd)     |
+|     `cp`|    Chest pain type| Typical angina (ta), atypical angina (aa), non-anginal pain (np), or asymptomatic (a)     |
+|     `ca`| Number of major vessels colored by flourosopy, a continuous x-ray imaging tool|0, 1, 2 or 3 |
 
 
 --- .class #id 
