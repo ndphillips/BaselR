@@ -1,0 +1,25 @@
+---
+title: "BaselR_Nodes"
+author: "Nathaniel Phillips"
+date: "7 March 2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1
+
+As the city’s principal public hospital, Cook County was the place of last resort for the hundreds of thousands of Chicagoans without health insurance. Resources were stretched to the limit. The hospital’s cavernous wards were built for another century. There were no private rooms, and patients were separated by flimsy plywood dividers. There was no cafeteria or private telephone—just a payphone for everyone at the end of the hall. In one possibly apocryphal story, doctors once trained a homeless man to do routine lab tests because there was no one else available.
+
+
+### 2
+
+But the Emergency Department (the ED) seemed to cry out for special attention. The rooms were jammed. A staggering 250,000 patients came through the ED every year. How do you figure out who needs what? How do you figure out how to direct resources to those who need them the most?”
+
+
+### 3
+
+A significant number of those people filing into the ED—on average, about thirty a day—were worried that they were having a heart attack.  Chest-pain patients were resource-intensive. The treatment protocol was long and elaborate and—worst of all—maddeningly inconclusive.
+

@@ -314,7 +314,6 @@ plot(heart.fft,
 <img src="images/roc.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="80%" style="display: block; margin: auto;" />
 
 
-
 --- .class #id 
 ## Heart Disease FFT | Tree 4
 
@@ -510,9 +509,43 @@ Table: 5 of the 10 prediction datasets
 
 <img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="100%" style="display: block; margin: auto;" />
 
+
+--- &twocol
+
+*** =left
+
+## Please help and contribute!
+
+- I want more real-world tests of `FFTrees`! If you have data you want to try `FFTrees` on, or can think of new features, please let me know and I would be happy to collaborate.
+
+- I am very happy for contributions and bug reports at `github.com/ndphillips/FFTrees`, 
+
+*** =right
+
+[](https://www.revive-adserver.com/media/GitHub.jpg)
+
+<img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="100%" style="display: block; margin: auto;" />
+
+
 --- .class #id 
 ## Questions?
 
-<img src="figure/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" style="display: block; margin: auto;" />
+
+--- &twocol
+
+*** =left
+## FFTrees algorithm
+
+1. Calculate a decision threshold `t` for each cue that maximizes the cue’s balanced accuracy `bacc` in training.
+
+2. Rank cues in order of their maximum balanced accuracy -- select the top N cues. 
+
+3. Creates all possible `2^{N−1}` trees with these cues, using all exit structures.
+
+*** =right
+
+<img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" style="display: block; margin: auto;" />
+
 
 
