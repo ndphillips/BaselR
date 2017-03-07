@@ -567,8 +567,10 @@ knitr::include_graphics(c("images/simulation.png"))
 
 *** =right
 
-```{r , fig.margin = TRUE, echo = FALSE, fig.align='center', message = FALSE, echo = FALSE, dpi = 300, out.width = "100%"}
-knitr::include_graphics(c("images/traintreestats.png"))
+
+```{r, eval = TRUE, fig.align = 'center', echo = FALSE}
+plot(heart.fft, main = "Heart Disease", 
+     decision.names = c("Healthy", "Diseased"), stats = FALSE)
 ```
 
 

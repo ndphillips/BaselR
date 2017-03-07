@@ -513,7 +513,8 @@ Table: 5 of the 10 prediction datasets
 
 *** =right
 
-<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="100%" style="display: block; margin: auto;" />
+
+<img src="figure/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="504" style="display: block; margin: auto;" />
 
 
 --- &twocol
