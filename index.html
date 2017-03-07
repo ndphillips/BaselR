@@ -4,7 +4,7 @@
   <title>FFTrees</title>
   <meta charset="utf-8">
   <meta name="description" content="FFTrees">
-  <meta name="author" content="Nathaniel Phillips, Economic Psychology, University of Basel">
+  <meta name="author" content="Nathaniel D. Phillips, Economic Psychology, University of Basel">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -44,7 +44,7 @@
   <hgroup class="auto-fadein">
     <h1>FFTrees</h1>
     <h2>An R package to create, visualize, and implement fast and frugal decision trees</h2>
-    <p>Nathaniel Phillips, Economic Psychology, University of Basel<br/>BaselR Meeting, March 2017, ndphillips.github.io/RBasel</p>
+    <p>Nathaniel D. Phillips, Economic Psychology, University of Basel<br/>BaselR Meeting, March 2017, ndphillips.github.io/RBasel</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -64,7 +64,7 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Patient overload</h2>
+    <h2>Emergency Room overload</h2>
   </hgroup>
   <article data-timings="">
     <p><img src="images/crowdedemergency.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" style="display: block; margin: auto;" /></p>
@@ -77,14 +77,14 @@
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
-  <h2>Diagnosing heart attacks</h2>
+  <h2>Heart attacks (?)</h2>
 
 <!-- A significant number of those people filing into the ED—on average, about thirty a day—were worried that they were having a heart attack.  Chest-pain patients were resource-intensive. The treatment protocol was long and elaborate and—worst of all—maddeningly inconclusive. -->
 
 <ul>
-<li>30 people a day worried about a heart attack. </li>
-<li>Coronary care bed costs $2,000 a night and requires a 3 day stay.</li>
-<li>Send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.</li>
+<li>30 people a day worried about a heart attack</li>
+<li><strong>Coronary care bed</strong> ($2,000 a night + 3 day stay) or <strong>Regular bed</strong></li>
+<li>Goal: send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.</li>
 </ul>
 
 <h3>Multiple, uncertain measures</h3>
@@ -205,11 +205,11 @@
   <h2>Fast and Frugal tree</h2>
 
 <ul class = "build incremental">
-<li><p>A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree where each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).</p></li>
+<li><p>A fast and frugal decision tree (FFT) is a decision tree where each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).</p></li>
 <li><p>FFTs -&gt; Cheap, easy to understand, and rarely overfit.</p></li>
 </ul>
 
-<p><img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="60%" style="display: block; margin: auto;" /></p>
+<p><img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="90%" style="display: block; margin: auto;" /></p>
 
 <!-- --- .class #id  -->
 
@@ -411,22 +411,26 @@ heart.fft
 <table><thead>
 <tr>
 <th align="left">cue</th>
+<th align="left">cost</th>
 <th align="left">description</th>
 <th align="left">values</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left"><code>thal</code></td>
+<td align="left">$102</td>
 <td align="left">thallium scintigraphy, a nuclear imaging test that shows how well blood flows into the heart.</td>
-<td align="left">normal (n), indicate a fixed defect (fd), or a reversible defect (rd)</td>
+<td align="left">normal (n), fixed defect (fd), reversible defect (rd)</td>
 </tr>
 <tr>
 <td align="left"><code>cp</code></td>
+<td align="left">$1</td>
 <td align="left">Chest pain type</td>
-<td align="left">Typical angina (ta), atypical angina (aa), non-anginal pain (np), or asymptomatic (a)</td>
+<td align="left">Typical angina (ta), atypical angina (aa), non-anginal pain (np), asymptomatic (a)</td>
 </tr>
 <tr>
 <td align="left"><code>ca</code></td>
+<td align="left">$101</td>
 <td align="left">Number of major vessels colored by flourosopy, a continuous x-ray imaging tool</td>
 <td align="left">0, 1, 2 or 3</td>
 </tr>
@@ -584,7 +588,7 @@ heart.fft
   <h2>Heart disease: rpart</h2>
 
 <ul>
-<li>8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)</li>
+<li>8 predictors, 3 - 5 required to make decisions</li>
 </ul>
 
 <p><img src="figure/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="80%" style="display: block; margin: auto;" /></p>
@@ -593,50 +597,18 @@ heart.fft
 <div style='float:right;width:48%;'>
   <h2>Heart disease: FFT</h2>
 
-<ul class = "build incremental">
-<li>3 cues (thal, cp, ca)</li>
-</ul>
-
-<!-- |     |  train|   test| -->
-
-<!-- |:----|------:|------:| -->
-
-<!-- |n    | 150.00| 153.00| -->
-
-<!-- |pci  |   0.87|   0.88| -->
-
-<!-- |mcu  |   1.87|   1.62| -->
-
-<!-- |acc  |   0.81|   0.80| -->
-
-<!-- |bacc |   0.79|   0.79| -->
-
-<!-- |sens |   0.63|   0.63| -->
-
-<!-- |spec |   0.95|   0.94| -->
-
-<ul class = "build incremental">
-<li>The FFT is very cheap to implement
+<ul>
+<li><p>3 predictors, only 1 - 3 required to make decisions</p></li>
+<li><p>The FFT is very cheap to implement</p>
 
 <ul>
+<li>Regression: $300</li>
+<li>rpart: &gt; $100</li>
 <li>Heart disease FFT: $75.91</li>
-<li>Regression: $300 </li>
 </ul></li>
 </ul>
 
 <p><img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="70%" style="display: block; margin: auto;" /></p>
-
-<!-- ```{r, eval = TRUE, fig.align = 'center', echo = FALSE} -->
-
-<!-- plot(heart.fft,  -->
-
-<!--      main = "Heart Disease",  -->
-
-<!--      decision.names = c("healthy", "sick"), -->
-
-<!--      stats = FALSE) -->
-
-<!-- ``` -->
 
 </div>
   </article>
@@ -786,22 +758,27 @@ heart.fft
 <div style='float:left;width:48%;' class='centered'>
   <h2>Conclusions</h2>
 
-<ul class = "build incremental">
-<li>FFTrees makes it easy to develop simple, effective, transparent decision trees.</li>
-<li>FFTrees can compete with complex decision algorithms, even Random Forests and Support Vector machines, in pure prediction.</li>
+<ul>
+<li><p>FFTrees makes it easy to create simple, effective, transparent fast and frugal decision trees (FFTs).</p></li>
+<li><p>FFTs can predict data &quot;as well&quot; as complex algorithms that use much more information.</p></li>
 </ul>
 
 <h2>Next steps</h2>
 
-<ul class = "build incremental">
+<ul>
 <li>Speed up code with c++ or Julia.</li>
 <li>Include <em>cue costs</em> into algorithm.</li>
-<li>Quantify when and how a tree <strong>fails</strong> when it is applied to data over time.</li>
+<li>Quantify when a tree <strong>fails</strong> over time.</li>
 </ul>
 
 </div>
 <div style='float:right;width:48%;'>
-  <p><img src="figure/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="504" style="display: block; margin: auto;" /></p>
+  <pre><code class="r"># Create FFTs in one line of code
+FFTrees(diagnosis ~., 
+        data = heartdisease)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="504" style="display: block; margin: auto;" /></p>
 
 </div>
   </article>
@@ -809,21 +786,46 @@ heart.fft
 </slide>
 
 <slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Please help and contribute!</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>I am very happy for contributions and bug reports at <a href="http://www.github.com/ndphillips/FFTrees">http://www.github.com/ndphillips/FFTrees</a>, </p></li>
+<li><p>If you have data you want to try <code>FFTrees</code> on, or can think of new features, let&#39;s collaborate!</p></li>
+</ul>
+
+<p><a href="https://www.revive-adserver.com/media/GitHub.jpg"></a></p>
+
+<p><img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="80%" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
-  <h2>Please help and contribute!</h2>
+  <h2>Questions?</h2>
 
-<ul>
-<li><p>I want more real-world tests of <code>FFTrees</code>! If you have data you want to try <code>FFTrees</code> on, or can think of new features, please let me know and I would be happy to collaborate.</p></li>
-<li><p>I am very happy for contributions and bug reports at <code>github.com/ndphillips/FFTrees</code>, </p></li>
-</ul>
+<p><img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="85%" style="display: block; margin: auto;" /></p>
 
 </div>
 <div style='float:right;width:48%;'>
-  <p><a href="https://www.revive-adserver.com/media/GitHub.jpg"></a></p>
+  <h2>Contact</h2>
 
-<p><img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="100%" style="display: block; margin: auto;" /></p>
+<h3>Website</h3>
+
+<h3><a href="http://ndphillips.github.io">http://ndphillips.github.io</a></h3>
+
+<h3>Email</h3>
+
+<h3><a href="mailto:Nathaniel.D.Phillips.is@gmail.com">Nathaniel.D.Phillips.is@gmail.com</a></h3>
+
+<h3>This talk</h3>
+
+<h3><a href="http://ndphillips.github.io/RBasel">http://ndphillips.github.io/RBasel</a></h3>
 
 </div>
   </article>
@@ -832,16 +834,49 @@ heart.fft
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Questions?</h2>
+    <h2>Fitting vs. Prediction</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="576" style="display: block; margin: auto;" /></p>
+    <p><img src="figure/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="864" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-37" style="background:;">
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Fitting vs. Prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="864" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Fitting vs. Prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="864" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Fitting vs. Prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="864" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -855,7 +890,7 @@ heart.fft
 
 </div>
 <div style='float:right;width:48%;'>
-  <p><img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="504" style="display: block; margin: auto;" /></p>
+  <p><img src="figure/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="504" style="display: block; margin: auto;" /></p>
 
 </div>
   </article>
@@ -874,7 +909,7 @@ heart.fft
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Patient overload'>
+        data-slide=2 title='Emergency Room overload'>
          2
       </a>
     </li>
@@ -1072,20 +1107,44 @@ heart.fft
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='NA'>
+        data-slide=35 title='Please help and contribute!'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Questions?'>
+        data-slide=36 title='NA'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='NA'>
+        data-slide=37 title='Fitting vs. Prediction'>
          37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Fitting vs. Prediction'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Fitting vs. Prediction'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Fitting vs. Prediction'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='NA'>
+         41
       </a>
     </li>
   </ul>

@@ -1,7 +1,7 @@
 ---
 title       : FFTrees
 subtitle    : An R package to create, visualize, and implement fast and frugal decision trees
-author      : Nathaniel Phillips, Economic Psychology, University of Basel
+author      : Nathaniel D. Phillips, Economic Psychology, University of Basel
 job         : BaselR Meeting, March 2017, ndphillips.github.io/RBasel
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -11,7 +11,9 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 logo : FFTrees_Logo.jpg
 biglogo : FFTrees_Logo.jpg
+css        : slidify.css
 ---
+
 
 
 
@@ -23,7 +25,7 @@ biglogo : FFTrees_Logo.jpg
 
 --- .class #id 
 
-## Patient overload
+## Emergency Room overload
 
 <img src="images/crowdedemergency.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" style="display: block; margin: auto;" />
 
@@ -34,13 +36,13 @@ biglogo : FFTrees_Logo.jpg
 
 *** =left
 
-## Diagnosing heart attacks
+## Heart attacks (?)
 
 <!-- A significant number of those people filing into the ED—on average, about thirty a day—were worried that they were having a heart attack.  Chest-pain patients were resource-intensive. The treatment protocol was long and elaborate and—worst of all—maddeningly inconclusive. -->
 
-- 30 people a day worried about a heart attack. 
-- Coronary care bed costs $2,000 a night and requires a 3 day stay.
-- Send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.
+- 30 people a day worried about a heart attack
+- **Coronary care bed** ($2,000 a night + 3 day stay) or **Regular bed**
+- Goal: send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.
 
 ### Multiple, uncertain measures
 
@@ -126,12 +128,12 @@ biglogo : FFTrees_Logo.jpg
 
 ## Fast and Frugal tree
 
-> - A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree where each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
+> - A fast and frugal decision tree (FFT) is a decision tree where each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
 
 > - FFTs -> Cheap, easy to understand, and rarely overfit.
 
 
-<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="60%" style="display: block; margin: auto;" />
+<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="90%" style="display: block; margin: auto;" />
 
 <!-- --- .class #id  -->
 
@@ -295,11 +297,11 @@ heart.fft
 ### 3 cues
 
 
-| cue| description|values |
-|:------|:----|:-----|
-|     `thal`|    thallium scintigraphy, a nuclear imaging test that shows how well blood flows into the heart.|normal (n), indicate a fixed defect (fd), or a reversible defect (rd)     |
-|     `cp`|    Chest pain type| Typical angina (ta), atypical angina (aa), non-anginal pain (np), or asymptomatic (a)     |
-|     `ca`| Number of major vessels colored by flourosopy, a continuous x-ray imaging tool|0, 1, 2 or 3 |
+| cue| cost | description|values |
+|:------|:---|:----|:-----|
+|     `thal`| $102 | thallium scintigraphy, a nuclear imaging test that shows how well blood flows into the heart.|normal (n), fixed defect (fd), reversible defect (rd)     |
+|     `cp`| $1 |    Chest pain type| Typical angina (ta), atypical angina (aa), non-anginal pain (np), asymptomatic (a)     |
+|     `ca`| $101 | Number of major vessels colored by flourosopy, a continuous x-ray imaging tool|0, 1, 2 or 3 |
 
 
 --- .class #id 
@@ -397,7 +399,7 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 *** =left
 ## Heart disease: rpart
 
-- 8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)
+- 8 predictors, 3 - 5 required to make decisions
 
 <img src="figure/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="80%" style="display: block; margin: auto;" />
 
@@ -405,32 +407,17 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 **** =right
 ## Heart disease: FFT
 
-> - 3 cues (thal, cp, ca)
+- 3 predictors, only 1 - 3 required to make decisions
 
+- The FFT is very cheap to implement
+    - Regression: $300
+    - rpart: > $100
+    - Heart disease FFT: $75.91
 
-<!-- |     |  train|   test| -->
-<!-- |:----|------:|------:| -->
-<!-- |n    | 150.00| 153.00| -->
-<!-- |pci  |   0.87|   0.88| -->
-<!-- |mcu  |   1.87|   1.62| -->
-<!-- |acc  |   0.81|   0.80| -->
-<!-- |bacc |   0.79|   0.79| -->
-<!-- |sens |   0.63|   0.63| -->
-<!-- |spec |   0.95|   0.94| -->
-
-> - The FFT is very cheap to implement
->    - Heart disease FFT: $75.91
->    - Regression: $300 
 
 
 <img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="70%" style="display: block; margin: auto;" />
 
-<!-- ```{r, eval = TRUE, fig.align = 'center', echo = FALSE} -->
-<!-- plot(heart.fft,  -->
-<!--      main = "Heart Disease",  -->
-<!--      decision.names = c("healthy", "sick"), -->
-<!--      stats = FALSE) -->
-<!-- ``` -->
 
 
 --- .class #id
@@ -500,44 +487,103 @@ Table: 5 of the 10 prediction datasets
 
 ## Conclusions
 
-> - FFTrees makes it easy to develop simple, effective, transparent decision trees.
-> - FFTrees can compete with complex decision algorithms, even Random Forests and Support Vector machines, in pure prediction.
+- FFTrees makes it easy to create simple, effective, transparent fast and frugal decision trees (FFTs).
+
+
+
+- FFTs can predict data "as well" as complex algorithms that use much more information.
 
 
 ## Next steps
 
-
-> - Speed up code with c++ or Julia.
-> - Include *cue costs* into algorithm.
-> - Quantify when and how a tree **fails** when it is applied to data over time.
+- Speed up code with c++ or Julia.
+- Include *cue costs* into algorithm.
+- Quantify when a tree **fails** over time.
 
 *** =right
 
 
-<img src="figure/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="504" style="display: block; margin: auto;" />
+```r
+# Create FFTs in one line of code
+FFTrees(diagnosis ~., 
+        data = heartdisease)
+```
+
+<img src="figure/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="504" style="display: block; margin: auto;" />
+
+
+--- 
+
+## Please help and contribute!
+
+- I am very happy for contributions and bug reports at [http://www.github.com/ndphillips/FFTrees](http://www.github.com/ndphillips/FFTrees), 
+
+- If you have data you want to try `FFTrees` on, or can think of new features, let's collaborate!
+
+
+[](https://www.revive-adserver.com/media/GitHub.jpg)
+
+<img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="80%" style="display: block; margin: auto;" />
 
 
 --- &twocol
 
 *** =left
 
-## Please help and contribute!
+## Questions?
 
-- I want more real-world tests of `FFTrees`! If you have data you want to try `FFTrees` on, or can think of new features, please let me know and I would be happy to collaborate.
-
-- I am very happy for contributions and bug reports at `github.com/ndphillips/FFTrees`, 
+<img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="85%" style="display: block; margin: auto;" />
 
 *** =right
 
-[](https://www.revive-adserver.com/media/GitHub.jpg)
+## Contact
 
-<img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="100%" style="display: block; margin: auto;" />
+### Website
+### http://ndphillips.github.io
+
+### Email
+### Nathaniel.D.Phillips.is@gmail.com
+
+
+### This talk
+### http://ndphillips.github.io/RBasel
+
+
 
 
 --- .class #id 
-## Questions?
 
-<img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="576" style="display: block; margin: auto;" />
+## Fitting vs. Prediction
+
+
+
+
+<img src="figure/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="864" />
+
+
+
+--- .class #id 
+
+## Fitting vs. Prediction
+
+<img src="figure/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="864" />
+
+
+--- .class #id 
+
+## Fitting vs. Prediction
+
+<img src="figure/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="864" />
+
+
+--- .class #id 
+
+## Fitting vs. Prediction
+
+<img src="figure/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="864" />
+
+
+
 
 --- &twocol
 
@@ -552,7 +598,7 @@ Table: 5 of the 10 prediction datasets
 
 *** =right
 
-<img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="504" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="504" style="display: block; margin: auto;" />
 
 
 

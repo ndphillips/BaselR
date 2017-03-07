@@ -1,7 +1,7 @@
 ---
 title       : FFTrees
 subtitle    : An R package to create, visualize, and implement fast and frugal decision trees
-author      : Nathaniel Phillips, Economic Psychology, University of Basel
+author      : Nathaniel D. Phillips, Economic Psychology, University of Basel
 job         : BaselR Meeting, March 2017, ndphillips.github.io/RBasel
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -11,7 +11,9 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 logo : FFTrees_Logo.jpg
 biglogo : FFTrees_Logo.jpg
+css        : slidify.css
 ---
+
 
 
 ```{r echo = FALSE, message = FALSE, results = "hide"}
@@ -31,7 +33,7 @@ knitr::include_graphics(c("images/cookmap.png"))
 
 --- .class #id 
 
-## Patient overload
+## Emergency Room overload
 
 ```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "70%", fig.align='center'}
 knitr::include_graphics(c("images/crowdedemergency.jpg"))
@@ -44,13 +46,13 @@ knitr::include_graphics(c("images/crowdedemergency.jpg"))
 
 *** =left
 
-## Diagnosing heart attacks
+## Heart attacks (?)
 
 <!-- A significant number of those people filing into the ED—on average, about thirty a day—were worried that they were having a heart attack.  Chest-pain patients were resource-intensive. The treatment protocol was long and elaborate and—worst of all—maddeningly inconclusive. -->
 
-- 30 people a day worried about a heart attack. 
-- Coronary care bed costs $2,000 a night and requires a 3 day stay.
-- Send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.
+- 30 people a day worried about a heart attack
+- **Coronary care bed** ($2,000 a night + 3 day stay) or **Regular bed**
+- Goal: send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.
 
 ### Multiple, uncertain measures
 
@@ -150,12 +152,12 @@ knitr::include_graphics(c("images/complextree.png"))
 
 ## Fast and Frugal tree
 
-> - A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree where each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
+> - A fast and frugal decision tree (FFT) is a decision tree where each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
 
 > - FFTs -> Cheap, easy to understand, and rarely overfit.
 
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align='center', message = FALSE, echo = FALSE}
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "90%", fig.align='center', message = FALSE, echo = FALSE}
 knitr::include_graphics(c("images/traintreestats.png"))
 ```
 
@@ -292,11 +294,11 @@ plot(heart.fft, main = "Heart Disease",
 ### 3 cues
 
 
-| cue| description|values |
-|:------|:----|:-----|
-|     `thal`|    thallium scintigraphy, a nuclear imaging test that shows how well blood flows into the heart.|normal (n), indicate a fixed defect (fd), or a reversible defect (rd)     |
-|     `cp`|    Chest pain type| Typical angina (ta), atypical angina (aa), non-anginal pain (np), or asymptomatic (a)     |
-|     `ca`| Number of major vessels colored by flourosopy, a continuous x-ray imaging tool|0, 1, 2 or 3 |
+| cue| cost | description|values |
+|:------|:---|:----|:-----|
+|     `thal`| $102 | thallium scintigraphy, a nuclear imaging test that shows how well blood flows into the heart.|normal (n), fixed defect (fd), reversible defect (rd)     |
+|     `cp`| $1 |    Chest pain type| Typical angina (ta), atypical angina (aa), non-anginal pain (np), asymptomatic (a)     |
+|     `ca`| $101 | Number of major vessels colored by flourosopy, a continuous x-ray imaging tool|0, 1, 2 or 3 |
 
 
 --- .class #id 
@@ -412,7 +414,7 @@ plot(heart.fff)
 *** =left
 ## Heart disease: rpart
 
-- 8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)
+- 8 predictors, 3 - 5 required to make decisions
 
 ```{r, out.width = "80%", echo = FALSE, fig.align = 'center'}
 heart.rpart <- rpart::rpart(diagnosis ~., data = heartdisease)
@@ -424,34 +426,19 @@ text(heart.rpart)
 **** =right
 ## Heart disease: FFT
 
-> - 3 cues (thal, cp, ca)
+- 3 predictors, only 1 - 3 required to make decisions
 
+- The FFT is very cheap to implement
+    - Regression: $300
+    - rpart: > $100
+    - Heart disease FFT: $75.91
 
-<!-- |     |  train|   test| -->
-<!-- |:----|------:|------:| -->
-<!-- |n    | 150.00| 153.00| -->
-<!-- |pci  |   0.87|   0.88| -->
-<!-- |mcu  |   1.87|   1.62| -->
-<!-- |acc  |   0.81|   0.80| -->
-<!-- |bacc |   0.79|   0.79| -->
-<!-- |sens |   0.63|   0.63| -->
-<!-- |spec |   0.95|   0.94| -->
-
-> - The FFT is very cheap to implement
->    - Heart disease FFT: $75.91
->    - Regression: $300 
 
 
 ```{r , fig.margin = TRUE, echo = FALSE, out.width = "70%", fig.align='center', message = FALSE, echo = FALSE}
 knitr::include_graphics(c("images/traintreestats.png"))
 ```
 
-<!-- ```{r, eval = TRUE, fig.align = 'center', echo = FALSE} -->
-<!-- plot(heart.fft,  -->
-<!--      main = "Heart Disease",  -->
-<!--      decision.names = c("healthy", "sick"), -->
-<!--      stats = FALSE) -->
-<!-- ``` -->
 
 
 --- .class #id
@@ -459,8 +446,8 @@ knitr::include_graphics(c("images/traintreestats.png"))
 
 ```{r, echo = FALSE,  fig.align = 'center', out.width = "80%", message = FALSE, results = "hide"}
 heart.sim <- data.frame(model = c(rep("FFT", 100),
-                                  rep("LR", 100),
-                                  rep("CART", 100)),
+                                  rep("Regression", 100),
+                                  rep("rpart", 100)),
                         data = c(rep("train", 300), rep("test", 300)),
                         bacc = c(heart.fff$tree.sim$bacc.train,
                                           heart.fff$lr.sim$bacc.train,
@@ -554,19 +541,26 @@ knitr::include_graphics(c("images/simulation.png"))
 
 ## Conclusions
 
-> - FFTrees makes it easy to develop simple, effective, transparent decision trees.
-> - FFTrees can compete with complex decision algorithms, even Random Forests and Support Vector machines, in pure prediction.
+- FFTrees makes it easy to create simple, effective, transparent fast and frugal decision trees (FFTs).
+
+
+
+- FFTs can predict data "as well" as complex algorithms that use much more information.
 
 
 ## Next steps
 
-
-> - Speed up code with c++ or Julia.
-> - Include *cue costs* into algorithm.
-> - Quantify when and how a tree **fails** when it is applied to data over time.
+- Speed up code with c++ or Julia.
+- Include *cue costs* into algorithm.
+- Quantify when a tree **fails** over time.
 
 *** =right
 
+```{r eval = FALSE}
+# Create FFTs in one line of code
+FFTrees(diagnosis ~., 
+        data = heartdisease)
+```
 
 ```{r, eval = TRUE, fig.align = 'center', echo = FALSE}
 plot(heart.fft, main = "Heart Disease", 
@@ -574,33 +568,216 @@ plot(heart.fft, main = "Heart Disease",
 ```
 
 
---- &twocol
-
-*** =left
+--- 
 
 ## Please help and contribute!
 
-- I want more real-world tests of `FFTrees`! If you have data you want to try `FFTrees` on, or can think of new features, please let me know and I would be happy to collaborate.
+- I am very happy for contributions and bug reports at [http://www.github.com/ndphillips/FFTrees](http://www.github.com/ndphillips/FFTrees), 
 
-- I am very happy for contributions and bug reports at `github.com/ndphillips/FFTrees`, 
+- If you have data you want to try `FFTrees` on, or can think of new features, let's collaborate!
 
-*** =right
 
 [](https://www.revive-adserver.com/media/GitHub.jpg)
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center', message = FALSE, echo = FALSE}
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "80%", fig.align='center', message = FALSE, echo = FALSE}
 knitr::include_graphics("https://www.revive-adserver.com/media/GitHub.jpg")
 ```
 
 
---- .class #id 
+--- &twocol
+
+*** =left
+
 ## Questions?
 
-```{r, eval = TRUE, fig.width = 8, fig.height = 7, fig.align='center', echo = FALSE}
+```{r, eval = TRUE, fig.width = 8, fig.height = 7, fig.align='center', echo = FALSE, out.width = "85%"}
 plot(heart.fft, 
      main = "Heart Disease", 
      decision.names = c("healthy", "sick"))
 ```
+
+*** =right
+
+## Contact
+
+### Website
+### http://ndphillips.github.io
+
+### Email
+### Nathaniel.D.Phillips.is@gmail.com
+
+
+### This talk
+### http://ndphillips.github.io/RBasel
+
+
+
+
+--- .class #id 
+
+## Fitting vs. Prediction
+
+```{r echo = FALSE}
+set.seed(101)
+q <- sort(runif(50, min = 0, 20))
+noise.train <- rnorm(length(q), mean=10, sd=120)
+noise.test <- rnorm(length(q), mean=10, sd=120)
+
+signal <- 500 + 0.4 * (q-10) ^ 3
+
+y.train <- signal + noise.train
+y.test <- signal + noise.test
+
+model.1 <- lm(y.train ~ poly(q,1))
+model.3 <- lm(y.train ~ poly(q,3))
+model.20 <- lm(y.train ~ poly(q,20))
+
+model.1.train.pred <- predict(model.1, data.frame(x = y.train))
+model.3.train.pred <- predict(model.3, data.frame(x = y.train))
+model.20.train.pred <- predict(model.20, data.frame(x = y.train))
+
+model.1.train.mae <- mean(abs(model.1.train.pred - y.train))
+model.3.train.mae <- mean(abs(model.3.train.pred - y.train))
+model.20.train.mae <- mean(abs(model.20.train.pred - y.train))
+
+model.1.test.pred <- predict(model.1, data.frame(x = y.test))
+model.3.test.pred <- predict(model.3, data.frame(x = y.test))
+model.20.test.pred <- predict(model.20, data.frame(x = y.test))
+
+model.1.test.mae <- mean(abs(model.1.test.pred - y.test))
+model.3.test.mae <- mean(abs(model.3.test.pred - y.test))
+model.20.test.mae <- mean(abs(model.20.test.pred - y.test))
+
+poly.stats <- cbind(c(model.1.train.mae, model.3.train.mae, model.20.train.mae),
+                    c(model.1.test.mae, model.3.test.mae, model.20.test.mae))
+
+colnames(poly.stats) <- c("train", "test")
+rownames(poly.stats) <- c("p1", "p3", "p20")
+```
+
+
+```{r echo = FALSE,   fig.width = 12, fig.height = 6}
+my.cols <- yarrr::piratepal("xmen", trans = .3)[c(3, 1, 2)]
+
+par(mfrow = c(1, 2))
+
+plot(q,y.train,col='deepskyblue4',xlab='q',main='Observed data', ylim = c(0, 1000))
+lines(q,signal,col="black",lwd=3, lty = 2)
+
+
+poly.stats.3 <- poly.stats
+poly.stats.3[,1:2] <- 0
+
+legend("topleft", 
+       legend = c("Simple", "Perfect", "Complex"), 
+       col = my.cols, lty = 1, lwd = 3)
+
+barplot(poly.stats.3, beside = TRUE, ylim = c(50, 150), xpd = F, col = my.cols[1:3], ylab = "Error (higher is worse!)")
+
+legend("topright", 
+       legend = c("Simple", "Perfect", "Complex"), 
+       col = my.cols, lty = 1, lwd = 3)
+```
+
+
+
+--- .class #id 
+
+## Fitting vs. Prediction
+
+```{r echo = FALSE,  fig.width = 12, fig.height = 6}
+my.cols <- yarrr::piratepal("xmen", trans = .3)[c(3, 1, 2)]
+
+par(mfrow = c(1, 2))
+
+plot(q,y.train,col='deepskyblue4',xlab='q',main='Observed data', ylim = c(0, 1000))
+lines(q,signal,col="black",lwd=3, lty = 2)
+
+lines(q, model.1.train.pred, col=my.cols[1],lwd=5)
+lines(q, model.3.train.pred, col=my.cols[2],lwd=5)
+lines(q, model.20.train.pred, col=my.cols[3],lwd=5)
+
+poly.stats.2 <- poly.stats
+poly.stats.2[,1:2] <- 0
+
+legend("topleft", 
+       legend = c("Simple", "Perfect", "Complex"), 
+       col = my.cols, lty = 1, lwd = 3)
+
+barplot(poly.stats.2, beside = TRUE, ylim = c(50, 150), xpd = F, col = my.cols[1:3], ylab = "Error (higher is worse!)")
+
+legend("topright", 
+       legend = c("Simple", "Perfect", "Complex"), 
+       col = my.cols, lty = 1, lwd = 3)
+
+```
+
+
+--- .class #id 
+
+## Fitting vs. Prediction
+
+```{r echo = FALSE,  fig.width = 12, fig.height = 6}
+my.cols <- yarrr::piratepal("xmen", trans = .3)[c(3, 1, 2)]
+
+par(mfrow = c(1, 2))
+
+plot(q,y.train,col='deepskyblue4',xlab='q',main='Observed data', ylim = c(0, 1000))
+lines(q,signal,col="black",lwd=3, lty = 2)
+
+lines(q, model.1.train.pred, col=my.cols[1],lwd=5)
+lines(q, model.3.train.pred, col=my.cols[2],lwd=5)
+lines(q, model.20.train.pred, col=my.cols[3],lwd=5)
+
+poly.stats.2 <- poly.stats
+poly.stats.2[,2] <- 0
+
+legend("topleft", 
+       legend = c("Simple", "Perfect", "Complex"), 
+       col = my.cols, lty = 1, lwd = 3)
+
+barplot(poly.stats.2, beside = TRUE, ylim = c(50, 150), xpd = F, col = my.cols[1:3], ylab = "Error (higher is worse!)")
+
+legend("topright", 
+       legend = c("Simple", "Perfect", "Complex"), 
+       col = my.cols, lty = 1, lwd = 3)
+
+```
+
+
+--- .class #id 
+
+## Fitting vs. Prediction
+
+```{r echo = FALSE, fig.width = 12, fig.height = 6}
+my.cols <- yarrr::piratepal("xmen", trans = .3)[c(3, 1, 2)]
+
+par(mfrow = c(1, 2))
+
+plot(q,y.test,col='deepskyblue4',xlab='q',main='Observed data', ylim = c(0, 1000), pch = 2)
+
+points(q,y.train,col=yarrr::transparent('deepskyblue4', .6))
+
+
+lines(q,signal,col="black",lwd=3)
+
+lines(q,model.1.test.pred,col=my.cols[1],lwd=5)
+lines(q,model.3.test.pred,col=my.cols[2],lwd=5)
+lines(q,model.20.test.pred,col=my.cols[3],lwd=5)
+
+legend("topleft", 
+       legend = c("Simple", "Perfect", "Complex"), 
+       col = my.cols, lty = 1, lwd = 3)
+
+barplot(poly.stats, beside = TRUE, ylim = c(50, 150), xpd = F, col = my.cols[1:3], ylab = "Error (higher is worse!)")
+
+legend("topright", 
+       legend = c("Simple", "Perfect", "Complex"), 
+       col = my.cols, lty = 1, lwd = 3)
+```
+
+
+
 
 --- &twocol
 
