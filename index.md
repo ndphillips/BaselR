@@ -304,7 +304,7 @@ heart.fft
 
 --- .class #id 
 ## Heart Disease FFT | Training
-<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="504" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="60%" style="display: block; margin: auto;" />
 
 
 

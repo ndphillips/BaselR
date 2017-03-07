@@ -301,7 +301,7 @@ plot(heart.fft, main = "Heart Disease",
 
 --- .class #id 
 ## Heart Disease FFT | Training
-```{r, eval = TRUE, echo = FALSE, fig.align = "center"}
+```{r, eval = TRUE, echo = FALSE, fig.align = "center", dpi = 300, out.width = "60%", fig.asp = .8}
 plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"))
 ```
 
