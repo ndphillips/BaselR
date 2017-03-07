@@ -2,7 +2,7 @@
 title       : FFTrees
 subtitle    : An R package to create, visualize, and implement fast and frugal decision trees
 author      : Nathaniel Phillips, Economic Psychology, University of Basel
-job         : BaselR Meeting, March 2017
+job         : BaselR Meeting, March 2017, ndphillips.github.io/RBasel
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -311,7 +311,7 @@ heart.fft
 --- .class #id 
 ## Heart Disease FFT | Prediction
 
-<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="60%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="600px" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -323,19 +323,19 @@ heart.fft
 --- .class #id 
 ## Heart Disease FFT | Tree 4
 
-<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="60%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="600px" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT | Tree 3
 
-<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="60%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="600px" style="display: block; margin: auto;" />
 
 --- .class #id
 ## Heart Disease FFT | Tree 6
 
-<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="60%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="600px" style="display: block; margin: auto;" />
 
 <!-- --- .class #id  -->
 <!-- ## How do FFTs compare to regression and CART? -->

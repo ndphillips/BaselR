@@ -2,7 +2,7 @@
 title       : FFTrees
 subtitle    : An R package to create, visualize, and implement fast and frugal decision trees
 author      : Nathaniel Phillips, Economic Psychology, University of Basel
-job         : BaselR Meeting, March 2017
+job         : BaselR Meeting, March 2017, ndphillips.github.io/RBasel
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -310,7 +310,7 @@ plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"))
 --- .class #id 
 ## Heart Disease FFT | Prediction
 
-```{r, eval = TRUE, echo = FALSE, fig.align = "center", dpi = 300, out.width = "60%", fig.asp = .8}
+```{r, eval = TRUE, echo = FALSE, fig.align = "center",, dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"), data = "test")
 ```
 
@@ -326,7 +326,7 @@ knitr::include_graphics(c("images/roc.png"))
 --- .class #id 
 ## Heart Disease FFT | Tree 4
 
-```{r, eval = TRUE, echo = FALSE, fig.align = "center", dpi = 300, out.width = "60%", fig.asp = .8}
+```{r, eval = TRUE, echo = FALSE, fig.align = "center", dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 plot(heart.fft, 
      main = "Heart Disease", 
      decision.names = c("healthy", "sick"), 
@@ -338,7 +338,7 @@ plot(heart.fft,
 --- .class #id 
 ## Heart Disease FFT | Tree 3
 
-```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide",dpi = 300, out.width = "60%", fig.asp = .8}
+```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide", dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 
 plot(heart.fft, main = "Heart Disease", 
      decision.names = c("healthy", "sick"), data = "test", tree = 3)
@@ -347,7 +347,7 @@ plot(heart.fft, main = "Heart Disease",
 --- .class #id
 ## Heart Disease FFT | Tree 6
 
-```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide", dpi = 300, out.width = "60%", fig.asp = .8}
+```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide", dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 
 plot(heart.fft, main = "Heart Disease", 
      decision.names = c("healthy", "sick"), data = "test", tree = 6)
@@ -395,7 +395,7 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 
 ### Visualise cue importance and co-occurence
 
-```{r, fig.align = 'center', echo = FALSE, dpi = 300, out.width = "800px", fig.asp = .58}
+```{r, fig.align = 'center', echo = FALSE, dpi = 300, out.width = "800px", fig.width = 12, fig.height = 6}
 plot(heart.fff)
 ```
 
@@ -567,7 +567,7 @@ knitr::include_graphics(c("images/simulation.png"))
 
 *** =right
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center', message = FALSE, echo = FALSE}
+```{r , fig.margin = TRUE, echo = FALSE, fig.align='center', message = FALSE, echo = FALSE, dpi = 300, out.width = "100%"}
 knitr::include_graphics(c("images/traintreestats.png"))
 ```
 
