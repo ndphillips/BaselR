@@ -263,7 +263,7 @@ print(heart.fft)
 
 # Step 3: Visualise the tree
 plot(heart.fft, data = "train")   # Training statistics
-plot(herat.fft, data = "test")    # Test statistics
+plot(heart.fft, data = "test")    # Test statistics
 ```
 
 
