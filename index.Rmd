@@ -61,8 +61,8 @@ knitr::include_graphics(c("images/crowdedemergency.jpg"))
 
 *** =right
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center'}
-knitr::include_graphics(c("images/chestpain.jpg"))
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "80%", fig.align='center'}
+knitr::include_graphics(c("images/paindecision.png"))
 ```
 
 --- .class #id 
@@ -71,19 +71,22 @@ knitr::include_graphics(c("images/chestpain.jpg"))
 
 - Task: Estimate from 0 to 100 the probability of a heart attack of 20 separate patients.
 
-```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "30%", fig.align='center'}
-knitr::include_graphics(c("images/medicalhistory.jpg"))
+```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "40%", fig.align='center'}
+knitr::include_graphics(c("images/howlikelyquestion.png"))
 ```
 
 --- .class #id 
 
-## Answer: Not consistent
+## Answer: Not consistent at all
 
-### "In each case the answers we got pretty much ranged from 0 to 100. It was extraordinary" (Brenden Reilly, Department of Medicine chairman)
+### "In each case the answers we got pretty much ranged from 0 to 100. It was extraordinary" ~ Department of Medicine chairman
 
-```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "70%", fig.align='center'}
-knitr::include_graphics(c("images/arguingdoctors.jpg"))
-```
+
+### The problem
+
+- Too much inconsistency in doctor's decisions
+- Too many healthy people sent to the coronary care unit.
+
 
 
 --- .class #id 
@@ -100,7 +103,7 @@ knitr::include_graphics(c("images/cooktree.png"))
 
 ### Why use a decision tree?
 
-> - Speed, Consistency, Easy to understand and use 'in the head'
+> - Easy to understand, consistent, requires little information, can be calculated 'in the head'
 
 
 --- .class #id 
@@ -138,17 +141,6 @@ knitr::include_graphics(c("images/cooktree.png"))
 ---  &twocol
 
 *** =left
-## Standard decision tree
-
-> - Standard decision trees created by unrestricted algorithms can become very complex
-
-> - Complexity -> High costs, Difficult to understand, prone to overfitting. 
-
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center', message = FALSE, echo = FALSE}
-knitr::include_graphics(c("images/complextree.png"))
-```
-
-*** =right
 
 ## Fast and Frugal tree
 
@@ -156,10 +148,22 @@ knitr::include_graphics(c("images/complextree.png"))
 
 > - FFTs -> Cheap, easy to understand, and rarely overfit.
 
-
 ```{r , fig.margin = TRUE, echo = FALSE, out.width = "90%", fig.align='center', message = FALSE, echo = FALSE}
 knitr::include_graphics(c("images/traintreestats.png"))
 ```
+
+*** =right
+
+## Standard decision tree
+
+> - "Standard"" decision trees can become very complex.
+
+> - Complexity -> High costs, Difficult to understand, prone to overfitting. 
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center', message = FALSE, echo = FALSE}
+knitr::include_graphics(c("images/complextree.png"))
+```
+
 
 <!-- --- .class #id  -->
 
@@ -242,17 +246,35 @@ head(heartdisease)
 ```
 
 --- .class #id 
-## Creating a Heart Disease FFT
+## 4 Steps to using FFTrees
+
+```{r, message = FALSE, eval = FALSE}
+# Step 1: Create the trees
+heart.fft <- FFTrees(formula = diagnosis ~., 
+                     data = heart.train,
+                     data.test = heart.test)
+
+# Step 2: View summary statistics
+print(heart.fft)
+
+# Step 3: Visualise the tree
+plot(heart.fft, data = "train")   # Training statistics
+plot(herat.fft, data = "test")    # Test statistics
+```
+
+
+--- .class #id 
+## Step 1: Create an FFTrees object
 
 ```{r, message = FALSE}
-# Step 1: Create training and test data
+# Step 0: Create training and test data
 set.seed(100)
 
 heartdisease <- heartdisease[sample(nrow(heartdisease)),]
 heart.train <- heartdisease[1:150,]
 heart.test <- heartdisease[151:303,]
 
-# Step 2: Create heart.fft
+# Step 1: Create heart.fft
 heart.fft <- FFTrees(formula = diagnosis ~.,
                      data = heart.train,
                      data.test = heart.test)
@@ -270,10 +292,10 @@ heart.fft <- FFTrees(formula = diagnosis ~.,
 
 
 --- .class #id 
-## FFT summary statistics
+## Printing an FFTrees object
 
 ```{r, message = FALSE, echo = TRUE}
-# Step 3: Summary statistics
+# Step 2: Summary statistics
 heart.fft
 ```
 
@@ -281,10 +303,15 @@ heart.fft
 
 *** =left
 
-## Heart Disease FFT
+## Plotting an FFTrees object
+
+`plot(heart.fft, stats = FALSE)`
+
 ```{r, eval = TRUE, fig.align = 'center', echo = FALSE}
-plot(heart.fft, main = "Heart Disease", 
-     decision.names = c("Healthy", "Diseased"), stats = FALSE)
+plot(heart.fft, 
+     main = "Heart Disease", 
+     decision.names = c("Healthy", "Diseased"), 
+     stats = FALSE)
 ```
 
 
@@ -302,7 +329,7 @@ plot(heart.fft, main = "Heart Disease",
 
 
 --- .class #id 
-## Heart Disease FFT | Training
+#### `plot(heart.fft)`
 ```{r, eval = TRUE, echo = FALSE, fig.align = "center", dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"))
 ```
@@ -310,7 +337,7 @@ plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"))
 
 
 --- .class #id 
-## Heart Disease FFT | Prediction
+#### `plot(heart.fft, data = "test")`
 
 ```{r, eval = TRUE, echo = FALSE, fig.align = "center",, dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"), data = "test")
@@ -326,7 +353,7 @@ knitr::include_graphics(c("images/roc.png"))
 
 
 --- .class #id 
-## Heart Disease FFT | Tree 4
+#### `plot(heart.fft, data = "test")`
 
 ```{r, eval = TRUE, echo = FALSE, fig.align = "center", dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 plot(heart.fft, 
@@ -338,7 +365,7 @@ plot(heart.fft,
 
 
 --- .class #id 
-## Heart Disease FFT | Tree 3
+#### `plot(heart.fft, data = "test", tree = 3)`
 
 ```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide", dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 
@@ -347,7 +374,7 @@ plot(heart.fft, main = "Heart Disease",
 ```
 
 --- .class #id
-## Heart Disease FFT | Tree 6
+#### `plot(heart.fft, data = "test", tree = 6)`
 
 ```{r, message = FALSE, fig.align = 'center', echo = FALSE, message = FALSE, results = "hide", dpi = 300, fig.width = 8, fig.height = 7, out.width = "600px"}
 

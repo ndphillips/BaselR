@@ -51,7 +51,7 @@ css        : slidify.css
 
 *** =right
 
-<img src="images/chestpain.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" style="display: block; margin: auto;" />
+<img src="images/paindecision.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="80%" style="display: block; margin: auto;" />
 
 --- .class #id 
 
@@ -59,15 +59,20 @@ css        : slidify.css
 
 - Task: Estimate from 0 to 100 the probability of a heart attack of 20 separate patients.
 
-<img src="images/medicalhistory.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="30%" style="display: block; margin: auto;" />
+<img src="images/howlikelyquestion.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="40%" style="display: block; margin: auto;" />
 
 --- .class #id 
 
-## Answer: Not consistent
+## Answer: Not consistent at all
 
-### "In each case the answers we got pretty much ranged from 0 to 100. It was extraordinary" (Brenden Reilly, Department of Medicine chairman)
+### "In each case the answers we got pretty much ranged from 0 to 100. It was extraordinary" ~ Department of Medicine chairman
 
-<img src="images/arguingdoctors.jpg" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="70%" style="display: block; margin: auto;" />
+
+### The problem
+
+- Too much inconsistency in doctor's decisions
+- Too many healthy people sent to the coronary care unit.
+
 
 
 --- .class #id 
@@ -77,18 +82,18 @@ css        : slidify.css
 - A fast and frugal decision tree (FFT) developed by a cardiologist named Lee Goldman.
 
 
-<img src="images/cooktree.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="20%" style="display: block; margin: auto;" />
+<img src="images/cooktree.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="20%" style="display: block; margin: auto;" />
 
 
 ### Why use a decision tree?
 
-> - Speed, Consistency, Easy to understand and use 'in the head'
+> - Easy to understand, consistent, requires little information, can be calculated 'in the head'
 
 
 --- .class #id 
 
 
-<img src="images/cooktree.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="40%" style="display: block; margin: auto;" />
+<img src="images/cooktree.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="40%" style="display: block; margin: auto;" />
 
 
 ---  &twocol
@@ -108,7 +113,7 @@ css        : slidify.css
 
 *** =right
 
-<img src="images/cooktree.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="80%" style="display: block; margin: auto;" />
+<img src="images/cooktree.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="80%" style="display: block; margin: auto;" />
 
 
 
@@ -116,15 +121,6 @@ css        : slidify.css
 ---  &twocol
 
 *** =left
-## Standard decision tree
-
-> - Standard decision trees created by unrestricted algorithms can become very complex
-
-> - Complexity -> High costs, Difficult to understand, prone to overfitting. 
-
-<img src="images/complextree.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="100%" style="display: block; margin: auto;" />
-
-*** =right
 
 ## Fast and Frugal tree
 
@@ -132,8 +128,18 @@ css        : slidify.css
 
 > - FFTs -> Cheap, easy to understand, and rarely overfit.
 
+<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="90%" style="display: block; margin: auto;" />
 
-<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="90%" style="display: block; margin: auto;" />
+*** =right
+
+## Standard decision tree
+
+> - "Standard"" decision trees can become very complex.
+
+> - Complexity -> High costs, Difficult to understand, prone to overfitting. 
+
+<img src="images/complextree.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="100%" style="display: block; margin: auto;" />
+
 
 <!-- --- .class #id  -->
 
@@ -189,7 +195,7 @@ css        : slidify.css
 ### Task
 - Create an easy-to-use R package that constructs, visualizes, and implements FFTs.
 
-<img src="images/FFTrees_Logo.jpg" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="30%" style="display: block; margin: auto;" />
+<img src="images/FFTrees_Logo.jpg" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="30%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -216,35 +222,54 @@ head(heartdisease)
 ```
 
 ```
-##     age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope
-## 138  62   1 aa      120  281   0 hypertrophy     103     0     1.4  flat
-## 250  62   1 aa      128  208   1 hypertrophy     140     0     0.0    up
-## 260  57   1 aa      124  261   0      normal     141     0     0.3    up
-## 173  59   0  a      174  249   0      normal     143     1     0.0  flat
-## 105  49   1 np      120  188   0      normal     139     0     2.0  flat
-## 19   48   0 np      130  275   0      normal     139     0     0.2    up
-##     ca   thal diagnosis  chol.cut
-## 138  1     rd         1 (257,301]
-## 250  0 normal         0 (170,214]
-## 260  0     rd         1 (257,301]
-## 173  0 normal         1 (214,257]
-## 105  3     rd         1 (170,214]
-## 19   0 normal         0 (257,301]
+##   age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope ca
+## 1  63   1 ta      145  233   1 hypertrophy     150     0     2.3  down  0
+## 2  67   1  a      160  286   0 hypertrophy     108     1     1.5  flat  3
+## 3  67   1  a      120  229   0 hypertrophy     129     1     2.6  flat  2
+## 4  37   1 np      130  250   0      normal     187     0     3.5  down  0
+## 5  41   0 aa      130  204   0 hypertrophy     172     0     1.4    up  0
+## 6  56   1 aa      120  236   0      normal     178     0     0.8    up  0
+##     thal diagnosis
+## 1     fd         0
+## 2 normal         1
+## 3     rd         1
+## 4 normal         0
+## 5 normal         0
+## 6 normal         0
 ```
 
 --- .class #id 
-## Creating a Heart Disease FFT
+## 4 Steps to using FFTrees
 
 
 ```r
-# Step 1: Create training and test data
+# Step 1: Create the trees
+heart.fft <- FFTrees(formula = diagnosis ~., 
+                     data = heart.train,
+                     data.test = heart.test)
+
+# Step 2: View summary statistics
+print(heart.fft)
+
+# Step 3: Visualise the tree
+plot(heart.fft, data = "train")   # Training statistics
+plot(herat.fft, data = "test")    # Test statistics
+```
+
+
+--- .class #id 
+## Step 1: Create an FFTrees object
+
+
+```r
+# Step 0: Create training and test data
 set.seed(100)
 
 heartdisease <- heartdisease[sample(nrow(heartdisease)),]
 heart.train <- heartdisease[1:150,]
 heart.test <- heartdisease[151:303,]
 
-# Step 2: Create heart.fft
+# Step 1: Create heart.fft
 heart.fft <- FFTrees(formula = diagnosis ~.,
                      data = heart.train,
                      data.test = heart.test)
@@ -262,33 +287,36 @@ heart.fft <- FFTrees(formula = diagnosis ~.,
 
 
 --- .class #id 
-## FFT summary statistics
+## Printing an FFTrees object
 
 
 ```r
-# Step 3: Summary statistics
+# Step 2: Summary statistics
 heart.fft
 ```
 
 ```
-## [1] "7 FFTs using up to 4 of 14 cues"
-## [1] "FFT #3 uses 4 cues {thal,ca,cp,oldpeak} with the following performance:"
+## [1] "7 FFTs using up to 4 of 13 cues"
+## [1] "FFT #4 uses 3 cues {thal,cp,ca} with the following performance:"
 ##       train   test
 ## n    150.00 153.00
-## pci    0.88   0.89
-## mcu    1.87   1.62
-## acc    0.81   0.80
-## bacc   0.79   0.79
-## sens   0.63   0.63
-## spec   0.95   0.94
+## pci    0.88   0.88
+## mcu    1.74   1.73
+## acc    0.80   0.82
+## bacc   0.80   0.82
+## sens   0.82   0.88
+## spec   0.79   0.76
 ```
 
 --- &twocol
 
 *** =left
 
-## Heart Disease FFT
-<img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="504" style="display: block; margin: auto;" />
+## Plotting an FFTrees object
+
+`plot(heart.fft, stats = FALSE)`
+
+<img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="504" style="display: block; margin: auto;" />
 
 
 
@@ -305,15 +333,15 @@ heart.fft
 
 
 --- .class #id 
-## Heart Disease FFT | Training
-<img src="assets/fig/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="600px" style="display: block; margin: auto;" />
+#### `plot(heart.fft)`
+<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="600px" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
-## Heart Disease FFT | Prediction
+#### `plot(heart.fft, data = "test")`
 
-<img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="600px" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="600px" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -323,21 +351,21 @@ heart.fft
 
 
 --- .class #id 
-## Heart Disease FFT | Tree 4
+#### `plot(heart.fft, data = "test")`
 
-<img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="600px" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="600px" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
-## Heart Disease FFT | Tree 3
+#### `plot(heart.fft, data = "test", tree = 3)`
 
-<img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="600px" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="600px" style="display: block; margin: auto;" />
 
 --- .class #id
-## Heart Disease FFT | Tree 6
+#### `plot(heart.fft, data = "test", tree = 6)`
 
-<img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="600px" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="600px" style="display: block; margin: auto;" />
 
 <!-- --- .class #id  -->
 <!-- ## How do FFTs compare to regression and CART? -->
@@ -381,7 +409,7 @@ heart.fft
 
 - 8 predictors, 3 - 5 required to make decisions
 
-<img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="80%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="80%" style="display: block; margin: auto;" />
 
 
 **** =right
@@ -406,20 +434,20 @@ heart.fft
 
 
 
-<img src="assets/fig/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="720" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="720" style="display: block; margin: auto;" />
 
 
 
 --- .class #id
 ## Heart disease classification accuracy
 
-<img src="assets/fig/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="720" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="720" style="display: block; margin: auto;" />
 
 --- .class #id
 ## Heart disease classification accuracy
 
 
-<img src="assets/fig/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="720" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="720" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -486,7 +514,7 @@ FFTrees(diagnosis ~.,
         data = heartdisease)
 ```
 
-<img src="assets/fig/unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="504" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="504" style="display: block; margin: auto;" />
 
 
 --- 
@@ -509,7 +537,7 @@ FFTrees(diagnosis ~.,
 
 ## Questions?
 
-<img src="assets/fig/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="85%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="85%" style="display: block; margin: auto;" />
 
 *** =right
 
@@ -533,7 +561,7 @@ FFTrees(diagnosis ~.,
 
 
 
-<img src="assets/fig/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="864" />
+<img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="864" />
 
 
 
@@ -541,21 +569,21 @@ FFTrees(diagnosis ~.,
 
 ## Fitting vs. Prediction
 
-<img src="assets/fig/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="864" />
+<img src="figure/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="864" />
 
 
 --- .class #id 
 
 ## Fitting vs. Prediction
 
-<img src="assets/fig/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="864" />
+<img src="figure/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="864" />
 
 
 --- .class #id 
 
 ## Fitting vs. Prediction
 
-<img src="assets/fig/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="864" />
+<img src="figure/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="864" />
 
 
 
@@ -573,7 +601,7 @@ FFTrees(diagnosis ~.,
 
 *** =right
 
-<img src="assets/fig/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="504" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="504" style="display: block; margin: auto;" />
 
 
 
@@ -582,7 +610,7 @@ FFTrees(diagnosis ~.,
 
 ### Visualise cue importance and co-occurence
 
-<img src="assets/fig/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="800px" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="800px" style="display: block; margin: auto;" />
 
 
 
@@ -594,7 +622,7 @@ FFTrees(diagnosis ~.,
 plot(heart.fft, what = "cues", main = "Heart Disease")
 ```
 
-<img src="assets/fig/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="504" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="504" style="display: block; margin: auto;" />
 
 
 
