@@ -18,8 +18,9 @@ biglogo : FFTrees_Logo.jpg
 load("../data/BaselR_FFTrees.RData")
 load("../data/forensictrees.RData")
 library(FFTrees)
+library(knitr)
+opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE, fig.retina = 2)
 ```
-
 
 ## A growing problem at the Cook County Hospital in 1996
 
@@ -300,7 +301,7 @@ plot(heart.fft, main = "Heart Disease",
 
 --- .class #id 
 ## Heart Disease FFT | Training
-```{r, eval = TRUE, echo = FALSE, fig.align = "center", fig.width = 8, fig.height = 7}
+```{r, eval = TRUE, echo = FALSE, fig.align = "center"}
 plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"))
 ```
 

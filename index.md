@@ -16,7 +16,6 @@ biglogo : FFTrees_Logo.jpg
 
 
 
-
 ## A growing problem at the Cook County Hospital in 1996
 
 <img src="images/cookmap.png" title="plot of chunk cookmap" alt="plot of chunk cookmap" width="70%" style="display: block; margin: auto;" />
@@ -287,7 +286,7 @@ heart.fft
 *** =left
 
 ## Heart Disease FFT
-<img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="504" style="display: block; margin: auto;" />
 
 
 
@@ -305,14 +304,14 @@ heart.fft
 
 --- .class #id 
 ## Heart Disease FFT | Training
-<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="504" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT | Prediction
 
-<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="576" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -324,19 +323,19 @@ heart.fft
 --- .class #id 
 ## Heart Disease FFT | Tree 4
 
-<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="576" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT | Tree 3
 
-<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="576" style="display: block; margin: auto;" />
 
 --- .class #id
 ## Heart Disease FFT | Tree 6
 
-<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="576" style="display: block; margin: auto;" />
 
 <!-- --- .class #id  -->
 <!-- ## How do FFTs compare to regression and CART? -->
@@ -374,7 +373,7 @@ heart.fft
 plot(heart.fft, what = "cues", main = "Heart Disease")
 ```
 
-<img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="504" style="display: block; margin: auto;" />
 
 
 
@@ -383,7 +382,7 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 
 ### Visualise cue importance and co-occurence
 
-<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="864" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -440,20 +439,20 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 
 
 
-<img src="figure/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="720" style="display: block; margin: auto;" />
 
 
 
 --- .class #id
 ## Heart disease classification accuracy
 
-<img src="figure/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="720" style="display: block; margin: auto;" />
 
 --- .class #id
 ## Heart disease classification accuracy
 
 
-<img src="figure/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="720" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -537,7 +536,7 @@ Table: 5 of the 10 prediction datasets
 --- .class #id 
 ## Questions?
 
-<img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="576" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -552,7 +551,7 @@ Table: 5 of the 10 prediction datasets
 
 *** =right
 
-<img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="504" style="display: block; margin: auto;" />
 
 
 
