@@ -35,11 +35,9 @@ biglogo : FFTrees_Logo.jpg
 
 *** =left
 
-## Diagnosing ER patients with chest pain.
+## Diagnosing heart attacks
 
 <!-- A significant number of those people filing into the ED—on average, about thirty a day—were worried that they were having a heart attack.  Chest-pain patients were resource-intensive. The treatment protocol was long and elaborate and—worst of all—maddeningly inconclusive. -->
-
-### Decision task
 
 - 30 people a day worried about a heart attack. 
 - Coronary care bed costs $2,000 a night and requires a 3 day stay.
