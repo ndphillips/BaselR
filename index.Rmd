@@ -384,14 +384,6 @@ plot(heart.fft, main = "Heart Disease",
 
 
 --- .class #id 
-## Heart disease cue accuracies
-
-```{r eval = TRUE, fig.align = 'center'}
-plot(heart.fft, what = "cues", main = "Heart Disease")
-```
-
-
---- .class #id 
 ## Comparing FFTs to standard trees
 
 
@@ -810,6 +802,15 @@ with(subset(heartdisease, diagnosis == 0),
 
 ```{r, fig.align = 'center', echo = FALSE, dpi = 300, out.width = "800px", fig.width = 12, fig.height = 6}
 plot(heart.fff)
+```
+
+
+
+--- .class #id 
+## Heart disease cue accuracies
+
+```{r eval = TRUE, fig.align = 'center'}
+plot(heart.fft, what = "cues", main = "Heart Disease")
 ```
 
 
