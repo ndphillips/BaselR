@@ -304,14 +304,14 @@ heart.fft
 
 --- .class #id 
 ## Heart Disease FFT | Training
-<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="60%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="600px" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT | Prediction
 
-<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="576" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="60%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -323,19 +323,19 @@ heart.fft
 --- .class #id 
 ## Heart Disease FFT | Tree 4
 
-<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="576" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="60%" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT | Tree 3
 
-<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="576" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="60%" style="display: block; margin: auto;" />
 
 --- .class #id
 ## Heart Disease FFT | Tree 6
 
-<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="576" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="60%" style="display: block; margin: auto;" />
 
 <!-- --- .class #id  -->
 <!-- ## How do FFTs compare to regression and CART? -->
@@ -382,7 +382,7 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 
 ### Visualise cue importance and co-occurence
 
-<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="864" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="800px" style="display: block; margin: auto;" />
 
 
 --- .class #id 

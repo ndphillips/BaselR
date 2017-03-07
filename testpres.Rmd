@@ -1,0 +1,44 @@
+---
+title       : FFTrees
+subtitle    : An R package to create, visualize, and implement fast and frugal decision trees
+author      : Nathaniel Phillips, Economic Psychology, University of Basel
+job         : BaselR Meeting, March 2017
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+logo : FFTrees_Logo.jpg
+biglogo : FFTrees_Logo.jpg
+---
+
+
+```{r echo = FALSE, message = FALSE, results = "hide"}
+load("../data/BaselR_FFTrees.RData")
+load("../data/forensictrees.RData")
+library(FFTrees)
+library(knitr)
+opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE, fig.retina = 2)
+```
+
+## A growing problem at the Cook County Hospital in 1996
+
+```{r cookmap, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "70%", fig.align='center'}
+knitr::include_graphics(c("images/cookmap.png"))
+```
+
+
+--- .class #id 
+
+## Patient overload
+
+```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "70%", fig.align='center'}
+knitr::include_graphics(c("images/crowdedemergency.jpg"))
+```
+
+
+
+
+
+
