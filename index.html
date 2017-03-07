@@ -319,20 +319,20 @@ devtools::github(&quot;ndphillips/FFTrees&quot;, include_vignette = TRUE)
 head(heartdisease)
 </code></pre>
 
-<pre><code>##   age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope ca
-## 1  63   1 ta      145  233   1 hypertrophy     150     0     2.3  down  0
-## 2  67   1  a      160  286   0 hypertrophy     108     1     1.5  flat  3
-## 3  67   1  a      120  229   0 hypertrophy     129     1     2.6  flat  2
-## 4  37   1 np      130  250   0      normal     187     0     3.5  down  0
-## 5  41   0 aa      130  204   0 hypertrophy     172     0     1.4    up  0
-## 6  56   1 aa      120  236   0      normal     178     0     0.8    up  0
-##     thal diagnosis
-## 1     fd         0
-## 2 normal         1
-## 3     rd         1
-## 4 normal         0
-## 5 normal         0
-## 6 normal         0
+<pre><code>##     age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope
+## 138  62   1 aa      120  281   0 hypertrophy     103     0     1.4  flat
+## 250  62   1 aa      128  208   1 hypertrophy     140     0     0.0    up
+## 260  57   1 aa      124  261   0      normal     141     0     0.3    up
+## 173  59   0  a      174  249   0      normal     143     1     0.0  flat
+## 105  49   1 np      120  188   0      normal     139     0     2.0  flat
+## 19   48   0 np      130  275   0      normal     139     0     0.2    up
+##     ca   thal diagnosis  chol.cut
+## 138  1     rd         1 (257,301]
+## 250  0 normal         0 (170,214]
+## 260  0     rd         1 (257,301]
+## 173  0 normal         1 (214,257]
+## 105  3     rd         1 (170,214]
+## 19   0 normal         0 (257,301]
 </code></pre>
 
   </article>
@@ -380,16 +380,16 @@ heart.fft &lt;- FFTrees(formula = diagnosis ~.,
 heart.fft
 </code></pre>
 
-<pre><code>## [1] &quot;7 FFTs using up to 4 of 13 cues&quot;
-## [1] &quot;FFT #4 uses 3 cues {thal,cp,ca} with the following performance:&quot;
+<pre><code>## [1] &quot;7 FFTs using up to 4 of 14 cues&quot;
+## [1] &quot;FFT #3 uses 4 cues {thal,ca,cp,oldpeak} with the following performance:&quot;
 ##       train   test
 ## n    150.00 153.00
-## pci    0.88   0.88
-## mcu    1.74   1.73
-## acc    0.80   0.82
-## bacc   0.80   0.82
-## sens   0.82   0.88
-## spec   0.79   0.76
+## pci    0.88   0.89
+## mcu    1.87   1.62
+## acc    0.81   0.80
+## bacc   0.79   0.79
+## sens   0.63   0.63
+## spec   0.95   0.94
 </code></pre>
 
   </article>
@@ -402,7 +402,7 @@ heart.fft
 <div style='float:left;width:48%;' class='centered'>
   <h2>Heart Disease FFT</h2>
 
-<p><img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="504" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="504" style="display: block; margin: auto;" /></p>
 
 </div>
 <div style='float:right;width:48%;'>
@@ -446,7 +446,7 @@ heart.fft
     <h2>Heart Disease FFT | Training</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="600px" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="600px" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -457,7 +457,7 @@ heart.fft
     <h2>Heart Disease FFT | Prediction</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="600px" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="600px" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -479,7 +479,7 @@ heart.fft
     <h2>Heart Disease FFT | Tree 4</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="600px" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="600px" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -490,7 +490,7 @@ heart.fft
     <h2>Heart Disease FFT | Tree 3</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="600px" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="600px" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -501,7 +501,7 @@ heart.fft
     <h2>Heart Disease FFT | Tree 6</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="600px" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="600px" style="display: block; margin: auto;" /></p>
 
 <!-- --- .class #id  -->
 
@@ -545,20 +545,6 @@ heart.fft
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Heart disease cue accuracies</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">plot(heart.fft, what = &quot;cues&quot;, main = &quot;Heart Disease&quot;)
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="504" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
     <h2>Comparing FFTs to standard trees</h2>
   </hgroup>
   <article data-timings="">
@@ -568,7 +554,7 @@ heart.fft
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -578,7 +564,7 @@ heart.fft
 <li>8 predictors, 3 - 5 required to make decisions</li>
 </ul>
 
-<p><img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="80%" style="display: block; margin: auto;" /></p>
 
 </div>
 <div style='float:right;width:48%;'>
@@ -595,7 +581,7 @@ heart.fft
 </ul></li>
 </ul>
 
-<p><img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
   </article>
@@ -607,7 +593,7 @@ heart.fft
     <h2>Heart disease classification accuracy</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="720" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="720" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -618,7 +604,7 @@ heart.fft
     <h2>Heart disease classification accuracy</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="720" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="720" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -629,7 +615,7 @@ heart.fft
     <h2>Heart disease classification accuracy</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="720" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="720" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -700,7 +686,7 @@ heart.fft
     <h2>Aggregate simulation prediction results</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="90%" style="display: block; margin: auto;" /></p>
+    <p><img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="90%" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -711,7 +697,7 @@ heart.fft
     <h2>Aggregate simulation prediction results</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="90%" style="display: block; margin: auto;" /></p>
+    <p><img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="90%" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -722,7 +708,7 @@ heart.fft
     <h2>Aggregate simulation prediction results</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="90%" style="display: block; margin: auto;" /></p>
+    <p><img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="90%" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -733,13 +719,13 @@ heart.fft
     <h2>Simulation prediction results by dataset</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="images/simulation.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="90%" style="display: block; margin: auto;" /></p>
+    <p><img src="images/simulation.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="90%" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:;">
+<slide class="" id="slide-32" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -765,14 +751,14 @@ FFTrees(diagnosis ~.,
         data = heartdisease)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="504" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="504" style="display: block; margin: auto;" /></p>
 
 </div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-34" style="background:;">
+<slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>Please help and contribute!</h2>
   </hgroup>
@@ -784,19 +770,19 @@ FFTrees(diagnosis ~.,
 
 <p><a href="https://www.revive-adserver.com/media/GitHub.jpg"></a></p>
 
-<p><img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="80%" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
   <h2>Questions?</h2>
 
-<p><img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="85%" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="85%" style="display: block; margin: auto;" /></p>
 
 </div>
 <div style='float:right;width:48%;'>
@@ -824,7 +810,7 @@ FFTrees(diagnosis ~.,
     <h2>Fitting vs. Prediction</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="864" /></p>
+    <p><img src="assets/fig/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="864" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -835,7 +821,7 @@ FFTrees(diagnosis ~.,
     <h2>Fitting vs. Prediction</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="864" /></p>
+    <p><img src="assets/fig/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="864" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -846,7 +832,7 @@ FFTrees(diagnosis ~.,
     <h2>Fitting vs. Prediction</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="864" /></p>
+    <p><img src="assets/fig/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="864" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -857,13 +843,13 @@ FFTrees(diagnosis ~.,
     <h2>Fitting vs. Prediction</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="figure/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="864" /></p>
+    <p><img src="assets/fig/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="864" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-40" style="background:;">
+<slide class="" id="slide-39" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -877,7 +863,7 @@ FFTrees(diagnosis ~.,
 
 </div>
 <div style='float:right;width:48%;'>
-  <p><img src="figure/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="504" style="display: block; margin: auto;" /></p>
+  <p><img src="assets/fig/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="504" style="display: block; margin: auto;" /></p>
 
 </div>
   </article>
@@ -891,7 +877,21 @@ FFTrees(diagnosis ~.,
   <article data-timings="">
     <h3>Visualise cue importance and co-occurence</h3>
 
-<p><img src="figure/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="800px" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="800px" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Heart disease cue accuracies</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(heart.fft, what = &quot;cues&quot;, main = &quot;Heart Disease&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="504" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1029,19 +1029,19 @@ FFTrees(diagnosis ~.,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Heart disease cue accuracies'>
+        data-slide=22 title='Comparing FFTs to standard trees'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Comparing FFTs to standard trees'>
+        data-slide=23 title='NA'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='NA'>
+        data-slide=24 title='Heart disease classification accuracy'>
          24
       </a>
     </li>
@@ -1059,13 +1059,13 @@ FFTrees(diagnosis ~.,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Heart disease classification accuracy'>
+        data-slide=27 title='How accurate are FFTs built by FFTrees?'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='How accurate are FFTs built by FFTrees?'>
+        data-slide=28 title='Aggregate simulation prediction results'>
          28
       </a>
     </li>
@@ -1083,31 +1083,31 @@ FFTrees(diagnosis ~.,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Aggregate simulation prediction results'>
+        data-slide=31 title='Simulation prediction results by dataset'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Simulation prediction results by dataset'>
+        data-slide=32 title='NA'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='NA'>
+        data-slide=33 title='Please help and contribute!'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Please help and contribute!'>
+        data-slide=34 title='NA'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='NA'>
+        data-slide=35 title='Fitting vs. Prediction'>
          35
       </a>
     </li>
@@ -1131,19 +1131,19 @@ FFTrees(diagnosis ~.,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Fitting vs. Prediction'>
+        data-slide=39 title='NA'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='NA'>
+        data-slide=40 title='FFForest()'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='FFForest()'>
+        data-slide=41 title='Heart disease cue accuracies'>
          41
       </a>
     </li>
