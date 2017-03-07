@@ -391,17 +391,6 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 ```
 
 
-
---- .class #id 
-## FFForest()
-
-### Visualise cue importance and co-occurence
-
-```{r, fig.align = 'center', echo = FALSE, dpi = 300, out.width = "800px", fig.width = 12, fig.height = 6}
-plot(heart.fff)
-```
-
-
 --- .class #id 
 ## Comparing FFTs to standard trees
 
@@ -543,10 +532,7 @@ knitr::include_graphics(c("images/simulation.png"))
 
 - FFTrees makes it easy to create simple, effective, transparent fast and frugal decision trees (FFTs).
 
-
-
 - FFTs can predict data "as well" as complex algorithms that use much more information.
-
 
 ## Next steps
 
@@ -608,9 +594,7 @@ plot(heart.fft,
 
 
 ### This talk
-### http://ndphillips.github.io/RBasel
-
-
+### http://ndphillips.github.io/BaselR
 
 
 --- .class #id 
@@ -815,6 +799,17 @@ with(subset(heartdisease, diagnosis == 1),
 with(subset(heartdisease, diagnosis == 0), 
      points(chol, rep(.8, length(chol)) + rnorm(length(chol), mean = 0, sd = .02), pch = 21, bg = yarrr::transparent("blue", .6), col = "white"))
 
+```
+
+
+
+--- .class #id 
+## FFForest()
+
+### Visualise cue importance and co-occurence
+
+```{r, fig.align = 'center', echo = FALSE, dpi = 300, out.width = "800px", fig.width = 12, fig.height = 6}
+plot(heart.fff)
 ```
 
 

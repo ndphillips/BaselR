@@ -378,15 +378,6 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 <img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="504" style="display: block; margin: auto;" />
 
 
-
---- .class #id 
-## FFForest()
-
-### Visualise cue importance and co-occurence
-
-<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="800px" style="display: block; margin: auto;" />
-
-
 --- .class #id 
 ## Comparing FFTs to standard trees
 
@@ -401,7 +392,7 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 
 - 8 predictors, 3 - 5 required to make decisions
 
-<img src="figure/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="80%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="80%" style="display: block; margin: auto;" />
 
 
 **** =right
@@ -416,7 +407,7 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 
 
 
-<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="70%" style="display: block; margin: auto;" />
+<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -425,21 +416,21 @@ plot(heart.fft, what = "cues", main = "Heart Disease")
 
 
 
+
+<img src="figure/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="720" style="display: block; margin: auto;" />
+
+
+
+--- .class #id
+## Heart disease classification accuracy
 
 <img src="figure/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="720" style="display: block; margin: auto;" />
 
-
-
 --- .class #id
 ## Heart disease classification accuracy
+
 
 <img src="figure/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="720" style="display: block; margin: auto;" />
-
---- .class #id
-## Heart disease classification accuracy
-
-
-<img src="figure/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="720" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -462,24 +453,24 @@ Table: 5 of the 10 prediction datasets
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="90%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="90%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="90%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Simulation prediction results by dataset
 
-<img src="images/simulation.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulation.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="90%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -489,10 +480,7 @@ Table: 5 of the 10 prediction datasets
 
 - FFTrees makes it easy to create simple, effective, transparent fast and frugal decision trees (FFTs).
 
-
-
 - FFTs can predict data "as well" as complex algorithms that use much more information.
-
 
 ## Next steps
 
@@ -509,7 +497,7 @@ FFTrees(diagnosis ~.,
         data = heartdisease)
 ```
 
-<img src="figure/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="504" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="504" style="display: block; margin: auto;" />
 
 
 --- 
@@ -523,7 +511,7 @@ FFTrees(diagnosis ~.,
 
 [](https://www.revive-adserver.com/media/GitHub.jpg)
 
-<img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="80%" style="display: block; margin: auto;" />
+<img src="https://www.revive-adserver.com/media/GitHub.jpg" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="80%" style="display: block; margin: auto;" />
 
 
 --- &twocol
@@ -532,7 +520,7 @@ FFTrees(diagnosis ~.,
 
 ## Questions?
 
-<img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="85%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="85%" style="display: block; margin: auto;" />
 
 *** =right
 
@@ -546,9 +534,7 @@ FFTrees(diagnosis ~.,
 
 
 ### This talk
-### http://ndphillips.github.io/RBasel
-
-
+### http://ndphillips.github.io/BaselR
 
 
 --- .class #id 
@@ -558,8 +544,15 @@ FFTrees(diagnosis ~.,
 
 
 
-<img src="figure/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="864" />
+<img src="figure/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="864" />
 
+
+
+--- .class #id 
+
+## Fitting vs. Prediction
+
+<img src="figure/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="864" />
 
 
 --- .class #id 
@@ -574,13 +567,6 @@ FFTrees(diagnosis ~.,
 ## Fitting vs. Prediction
 
 <img src="figure/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="864" />
-
-
---- .class #id 
-
-## Fitting vs. Prediction
-
-<img src="figure/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="864" />
 
 
 
@@ -598,7 +584,16 @@ FFTrees(diagnosis ~.,
 
 *** =right
 
-<img src="figure/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="504" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="504" style="display: block; margin: auto;" />
+
+
+
+--- .class #id 
+## FFForest()
+
+### Visualise cue importance and co-occurence
+
+<img src="figure/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="800px" style="display: block; margin: auto;" />
 
 
 
