@@ -1,6 +1,6 @@
 ---
 title       : FFTrees
-subtitle    : An R package to create, visualise, and impliment fast and frugal decision trees
+subtitle    : An R package to create, visualize, and implement fast and frugal decision trees
 author      : Nathaniel Phillips, Economic Psychology, University of Basel
 job         : BaselR Meeting, March 2017
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -39,46 +39,50 @@ knitr::include_graphics(c("images/crowdedemergency.jpg"))
 
 
 
---- 
+--- &twocol
 
+*** =left
 
 ## Diagnosing ER patients with chest pain.
 
 <!-- A significant number of those people filing into the ED—on average, about thirty a day—were worried that they were having a heart attack.  Chest-pain patients were resource-intensive. The treatment protocol was long and elaborate and—worst of all—maddeningly inconclusive. -->
 
-
-### Situation
-
-> - 30 people a day worried about a heart attack. 
-> - Coronary care bed costs $2,000 a night and requires a 3 day stay.
-
 ### Decision task
 
-> - Send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.
+- 30 people a day worried about a heart attack. 
+- Coronary care bed costs $2,000 a night and requires a 3 day stay.
+- Send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.
 
 ### Multiple, uncertain measures
 
-> - Electrocardiogram (ECG), Blood pressure, Stethescope,
-> - Questions: How long? How much? During exercise? History? Cholesterol? Drugs? etc.
+- Electrocardiogram (ECG), Blood pressure, Stethescope, How long? How much? During exercise? History? Cholesterol? Drugs? etc.
 
 
+*** =right
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics(c("images/chestpain.jpg"))
+```
 
 --- .class #id 
 
-## Decisions by intuition was not working
+## How good were doctor's intuitive decisions?
 
-> - Task: Estimate from 0 to 100 the probability of a heart attack of 20 separate patients.
+- Task: Estimate from 0 to 100 the probability of a heart attack of 20 separate patients.
 
 ```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "30%", fig.align='center'}
 knitr::include_graphics(c("images/medicalhistory.jpg"))
 ```
 
---- #blockquote
+--- .class #id 
 
-## Conclusion: Terribly low agreement
+## Answer: Not consistent
 
-"In each case the answers we got pretty much ranged from 0 to 100. It was extraordinary" (Brenden Reilly, Department of Medicine chairman)
+### "In each case the answers we got pretty much ranged from 0 to 100. It was extraordinary" (Brenden Reilly, Department of Medicine chairman)
 
+```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "70%", fig.align='center'}
+knitr::include_graphics(c("images/arguingdoctors.jpg"))
+```
 
 
 --- .class #id 
@@ -87,27 +91,46 @@ knitr::include_graphics(c("images/medicalhistory.jpg"))
 
 - A fast and frugal decision tree (FFT) developed by a cardiologist named Lee Goldman.
 
+
 ```{r , fig.margin = TRUE, echo = FALSE, out.width = "20%", fig.align='center'}
 knitr::include_graphics(c("images/cooktree.png"))
 ```
 
 
-### Why use a fast and frugal tree?
+### Why use a decision tree?
 
-> - Speed, Easy of understanding and implementation
+> - Speed, Consistency, Easy to understand and use 'in the head'
 
---- 
+
+--- .class #id 
+
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align='center'}
+knitr::include_graphics(c("images/cooktree.png"))
+```
+
+
+---  &twocol
+
+*** =left
 
 ## The Cook hospital decision tree
 
-> - Over two years, the performance of the tree was compared to the physician's intuitive judgments.
+- Over two years, the performance of the tree was compared to the physician's intuitive judgments.
 
 ### Results
 
-> - Doctor's intuitive accuracy: 75-90%
+> - Doctor's accuracy: 75-90%
 > - Decision tree accuracy: 95%
 > - Tree had far fewer false-positives and huge cost savings
 > - To this day, the tree is still used at the hospital.
+
+*** =right
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "80%", fig.align='center'}
+knitr::include_graphics(c("images/cooktree.png"))
+```
+
 
 
 
@@ -185,11 +208,11 @@ knitr::include_graphics(c("images/traintreestats.png"))
 --- .class #id 
 ## Problem
 
-> - There is no off-the-shelf method to construct FFTs.
-> - Previous researchers have individually constructed their FFTs.
+- There is no off-the-shelf method to construct FFTs.
+  - Previous researchers have individually constructed their FFTs.
 
 ### Task
-> - Create an easy-to-use R package that constructs, visualizes, and implements FFTs.
+- Create an easy-to-use R package that constructs, visualizes, and implements FFTs.
 
 ```{r , fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center', message = FALSE, echo = FALSE}
 knitr::include_graphics(c("images/FFTrees_Logo.jpg"))
@@ -263,15 +286,6 @@ plot(heart.fft,
 ```
 
 
---- .class #id 
-## Heart Disease FFT
-```{r, eval = FALSE, fig.align = 'center'}
-plot(heart.fft, 
-     main = "Heart Disease", 
-     decision.names = c("healthy", "sick"))
-```
-
-...
 
 --- .class #id 
 ## Heart Disease FFT | Training
@@ -353,6 +367,26 @@ plot(heart.fft, main = "Heart Disease",
 <!-- abline(h = 1.96) -->
 
 <!-- ``` -->
+
+
+
+--- .class #id 
+## Heart disease cue accuracies
+
+```{r eval = TRUE, fig.align = 'center'}
+plot(heart.fft, what = "cues", main = "Heart Disease")
+```
+
+
+
+--- .class #id 
+## FFForest()
+
+### Visualise cue importance and co-occurence
+
+```{r, fig.width = 12, fig.height = 7, fig.align = 'center', echo = FALSE}
+plot(heart.fff)
+```
 
 
 --- .class #id 
@@ -535,20 +569,4 @@ plot(heart.fft,
      decision.names = c("healthy", "sick"))
 ```
 
-
---- .class #id 
-## FFForest()
-
-```{r, fig.width = 12, fig.height = 7, fig.align = 'center'}
-plot(heart.fff)
-```
-
-
---- .class #id 
-## Heart disease cue accuracies
-
-
-```{r eval = TRUE}
-plot(heart.fft, what = "cues", main = "Heart Disease")
-```
 
