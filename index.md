@@ -22,14 +22,18 @@ css        : slidify.css
 
 <img src="images/cookmap.png" title="plot of chunk cookmap" alt="plot of chunk cookmap" width="70%" style="display: block; margin: auto;" />
 
+"As the city’s principal public hospital, Cook County was the place of last resort for the hundreds of thousands of Chicagoans without health insurance. Resources were stretched to the limit. The hospital’s cavernous wards were built for another century. There were no private rooms, and patients were separated by flimsy plywood dividers. There was no cafeteria or private telephone—just a payphone for everyone at the end of the hall. In one possibly apocryphal story, doctors once trained a homeless man to do routine lab tests because there was no one else available." Malcolm Gladwell, Blink.
+
 
 --- .class #id 
 
 ## Emergency Room overload
 
-<img src="images/crowdedemergency.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" style="display: block; margin: auto;" />
+<img src="images/crowdedemergency.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="60%" style="display: block; margin: auto;" />
 
-
+- 250,000 patients per year
+- Not enough space.
+- Complete chaos
 
 
 --- &twocol
@@ -257,23 +261,8 @@ plot(herat.fft, data = "test")    # Test statistics
 ```
 
 
---- .class #id 
-## Step 1: Create an FFTrees object
 
 
-```r
-# Step 0: Create training and test data
-set.seed(100)
-
-heartdisease <- heartdisease[sample(nrow(heartdisease)),]
-heart.train <- heartdisease[1:150,]
-heart.test <- heartdisease[151:303,]
-
-# Step 1: Create heart.fft
-heart.fft <- FFTrees(formula = diagnosis ~.,
-                     data = heart.train,
-                     data.test = heart.test)
-```
 
 <!-- --- .class #id  -->
 <!-- ## Evaluating a decision algorithm -->

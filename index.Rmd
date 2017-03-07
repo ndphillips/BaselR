@@ -30,16 +30,20 @@ opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE, fig.retina = 2)
 knitr::include_graphics(c("images/cookmap.png"))
 ```
 
+"As the city’s principal public hospital, Cook County was the place of last resort for the hundreds of thousands of Chicagoans without health insurance. Resources were stretched to the limit. The hospital’s cavernous wards were built for another century. There were no private rooms, and patients were separated by flimsy plywood dividers. There was no cafeteria or private telephone—just a payphone for everyone at the end of the hall. In one possibly apocryphal story, doctors once trained a homeless man to do routine lab tests because there was no one else available." Malcolm Gladwell, Blink.
+
 
 --- .class #id 
 
 ## Emergency Room overload
 
-```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "70%", fig.align='center'}
+```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "60%", fig.align='center'}
 knitr::include_graphics(c("images/crowdedemergency.jpg"))
 ```
 
-
+- 250,000 patients per year
+- Not enough space.
+- Complete chaos
 
 
 --- &twocol
@@ -263,22 +267,15 @@ plot(herat.fft, data = "test")    # Test statistics
 ```
 
 
---- .class #id 
-## Step 1: Create an FFTrees object
-
-```{r, message = FALSE}
+```{r echo = FALSE}
 # Step 0: Create training and test data
 set.seed(100)
 
 heartdisease <- heartdisease[sample(nrow(heartdisease)),]
 heart.train <- heartdisease[1:150,]
 heart.test <- heartdisease[151:303,]
-
-# Step 1: Create heart.fft
-heart.fft <- FFTrees(formula = diagnosis ~.,
-                     data = heart.train,
-                     data.test = heart.test)
 ```
+
 
 <!-- --- .class #id  -->
 <!-- ## Evaluating a decision algorithm -->

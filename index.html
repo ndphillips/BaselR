@@ -58,6 +58,8 @@
   <article data-timings="">
     <p><img src="images/cookmap.png" title="plot of chunk cookmap" alt="plot of chunk cookmap" width="70%" style="display: block; margin: auto;" /></p>
 
+<p>&quot;As the city’s principal public hospital, Cook County was the place of last resort for the hundreds of thousands of Chicagoans without health insurance. Resources were stretched to the limit. The hospital’s cavernous wards were built for another century. There were no private rooms, and patients were separated by flimsy plywood dividers. There was no cafeteria or private telephone—just a payphone for everyone at the end of the hall. In one possibly apocryphal story, doctors once trained a homeless man to do routine lab tests because there was no one else available.&quot; Malcolm Gladwell, Blink.</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -67,7 +69,13 @@
     <h2>Emergency Room overload</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="images/crowdedemergency.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" style="display: block; margin: auto;" /></p>
+    <p><img src="images/crowdedemergency.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="60%" style="display: block; margin: auto;" /></p>
+
+<ul>
+<li>250,000 patients per year</li>
+<li>Not enough space.</li>
+<li>Complete chaos</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -362,28 +370,6 @@ plot(heart.fft, data = &quot;train&quot;)   # Training statistics
 plot(herat.fft, data = &quot;test&quot;)    # Test statistics
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Step 1: Create an FFTrees object</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r"># Step 0: Create training and test data
-set.seed(100)
-
-heartdisease &lt;- heartdisease[sample(nrow(heartdisease)),]
-heart.train &lt;- heartdisease[1:150,]
-heart.test &lt;- heartdisease[151:303,]
-
-# Step 1: Create heart.fft
-heart.fft &lt;- FFTrees(formula = diagnosis ~.,
-                     data = heart.train,
-                     data.test = heart.test)
-</code></pre>
-
 <!-- --- .class #id  -->
 
 <!-- ## Evaluating a decision algorithm -->
@@ -423,7 +409,7 @@ heart.fft
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -583,7 +569,7 @@ heart.fft
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -754,7 +740,7 @@ heart.fft
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:;">
+<slide class="" id="slide-32" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -787,7 +773,7 @@ FFTrees(diagnosis ~.,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-34" style="background:;">
+<slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>Please help and contribute!</h2>
   </hgroup>
@@ -805,7 +791,7 @@ FFTrees(diagnosis ~.,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -878,7 +864,7 @@ FFTrees(diagnosis ~.,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-40" style="background:;">
+<slide class="" id="slide-39" style="background:;">
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
@@ -1010,67 +996,67 @@ FFTrees(diagnosis ~.,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Step 1: Create an FFTrees object'>
+        data-slide=14 title='Printing an FFTrees object'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Printing an FFTrees object'>
+        data-slide=15 title='NA'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='NA'>
+        data-slide=16 title='<code>plot(heart.fft)</code>'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='<code>plot(heart.fft)</code>'>
+        data-slide=17 title='<code>plot(heart.fft, data = &quot;test&quot;)</code>'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='<code>plot(heart.fft, data = &quot;test&quot;)</code>'>
+        data-slide=18 title='Heart Disease FFT | ROC'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Heart Disease FFT | ROC'>
+        data-slide=19 title='<code>plot(heart.fft, data = &quot;test&quot;)</code>'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='<code>plot(heart.fft, data = &quot;test&quot;)</code>'>
+        data-slide=20 title='<code>plot(heart.fft, data = &quot;test&quot;, tree = 3)</code>'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='<code>plot(heart.fft, data = &quot;test&quot;, tree = 3)</code>'>
+        data-slide=21 title='<code>plot(heart.fft, data = &quot;test&quot;, tree = 6)</code>'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='<code>plot(heart.fft, data = &quot;test&quot;, tree = 6)</code>'>
+        data-slide=22 title='Comparing FFTs to standard trees'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Comparing FFTs to standard trees'>
+        data-slide=23 title='NA'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='NA'>
+        data-slide=24 title='Heart disease classification accuracy'>
          24
       </a>
     </li>
@@ -1088,13 +1074,13 @@ FFTrees(diagnosis ~.,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Heart disease classification accuracy'>
+        data-slide=27 title='How accurate are FFTs built by FFTrees?'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='How accurate are FFTs built by FFTrees?'>
+        data-slide=28 title='Aggregate simulation prediction results'>
          28
       </a>
     </li>
@@ -1112,31 +1098,31 @@ FFTrees(diagnosis ~.,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Aggregate simulation prediction results'>
+        data-slide=31 title='Simulation prediction results by dataset'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Simulation prediction results by dataset'>
+        data-slide=32 title='NA'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='NA'>
+        data-slide=33 title='Please help and contribute!'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Please help and contribute!'>
+        data-slide=34 title='NA'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='NA'>
+        data-slide=35 title='Fitting vs. Prediction'>
          35
       </a>
     </li>
@@ -1160,26 +1146,20 @@ FFTrees(diagnosis ~.,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Fitting vs. Prediction'>
+        data-slide=39 title='NA'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='NA'>
+        data-slide=40 title='FFForest()'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='FFForest()'>
+        data-slide=41 title='Heart disease cue accuracies'>
          41
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Heart disease cue accuracies'>
-         42
       </a>
     </li>
   </ul>
