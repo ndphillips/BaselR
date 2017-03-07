@@ -36,9 +36,6 @@ knitr::include_graphics(c("images/cookmap.png"))
 knitr::include_graphics(c("images/crowdedemergency.jpg"))
 ```
 
-<!-- As the city’s principal public hospital, Cook County was the place of last resort for the hundreds of thousands of Chicagoans without health insurance. Resources were stretched to the limit. The hospital’s cavernous wards were built for another century. There were no private rooms, and patients were separated by flimsy plywood dividers. There was no cafeteria or private telephone—just a payphone for everyone at the end of the hall. In one possibly apocryphal story, doctors once trained a homeless man to do routine lab tests because there was no one else available. -->
-
-<!-- > But the Emergency Department (the ED) seemed to cry out for special attention. The rooms were jammed. A staggering 250,000 patients came through the ED every year. How do you figure out who needs what? How do you figure out how to direct resources to those who need them the most?” -->
 
 
 
@@ -57,23 +54,20 @@ knitr::include_graphics(c("images/crowdedemergency.jpg"))
 
 ### Decision task
 
-> - Send people with heart attacks to the coronary care bed, and healthy patients to a normal bed.
+> - Send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.
 
 ### Multiple, uncertain measures
 
-> - Blood pressure, Stethescope,
+> - Electrocardiogram (ECG), Blood pressure, Stethescope,
 > - Questions: How long? How much? During exercise? History? Cholesterol? Drugs? etc.
-> - Electrocardiogram (ECG) reading.
+
 
 
 --- .class #id 
 
 ## Decisions by intuition was not working
 
-### Study: How much do doctors agree on diagnoses?
-
-> - Asked doctors to estimate from 0 to 100 the probability of a heart attack of 20 separate patients.
-
+> - Task: Estimate from 0 to 100 the probability of a heart attack of 20 separate patients.
 
 ```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "30%", fig.align='center'}
 knitr::include_graphics(c("images/medicalhistory.jpg"))
@@ -91,24 +85,18 @@ knitr::include_graphics(c("images/medicalhistory.jpg"))
 
 ## Solution
 
-- A decision tree developed by a cardiologist named Lee Goldman.
+- A fast and frugal decision tree (FFT) developed by a cardiologist named Lee Goldman.
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center'}
-knitr::include_graphics(c("images/cooktree.gif"))
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "20%", fig.align='center'}
+knitr::include_graphics(c("images/cooktree.png"))
 ```
 
 
-### Why use a decision tree?
+### Why use a fast and frugal tree?
 
 > - Speed, Easy of understanding and implementation
 
-
-
-
-
---- &twocol
-
-*** =left
+--- 
 
 ## The Cook hospital decision tree
 
@@ -116,53 +104,58 @@ knitr::include_graphics(c("images/cooktree.gif"))
 
 ### Results
 
-> - Tree dramatically outperformed the doctor's clinical judgments and resulted in far fewer false-positives and huge cost savings
-
+> - Doctor's intuitive accuracy: 75-90%
+> - Decision tree accuracy: 95%
+> - Tree had far fewer false-positives and huge cost savings
 > - To this day, the tree is still used at the hospital.
 
-*** =right
-
-```{r, fig.margin = TRUE, echo = FALSE, eval = TRUE, out.width = "75%", fig.cap = "Dr. Lee Goldman", fig.align='center'}
-knitr::include_graphics(c("images/goldman.jpg"))
-```
 
 
 ---  &twocol
 
 *** =left
-## Fast and frugal decision trees (FFT)
+## Standard decision tree
 
-> - A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree.
+> - Standard decision trees created by unrestricted algorithms can become very complex
 
-> - In an FFT, each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
+> - Complexity -> High costs, Difficult to understand, prone to overfitting. 
 
-> - FFTs are even faster and require less information than non-FFT trees.
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center', message = FALSE, echo = FALSE}
+knitr::include_graphics(c("images/complextree.png"))
+```
 
 *** =right
 
-```{r test, fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center', message = FALSE, echo = FALSE}
+## Fast and Frugal tree
+
+> - A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree where each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
+
+> - FFTs -> Cheap, easy to understand, and rarely overfit.
+
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align='center', message = FALSE, echo = FALSE}
 knitr::include_graphics(c("images/traintreestats.png"))
 ```
 
---- .class #id 
+<!-- --- .class #id  -->
 
-## Depression Tree
+<!-- ## Depression Tree -->
 
-- Jenny et al. (2013): Simple rules for detecting depression
+<!-- - Jenny et al. (2013): Simple rules for detecting depression -->
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align='center'}
-knitr::include_graphics(c("images/depressiontree.png"))
-```
+<!-- ```{r , fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align='center'} -->
+<!-- knitr::include_graphics(c("images/depressiontree.png")) -->
+<!-- ``` -->
 
---- .class #id 
+<!-- --- .class #id  -->
 
-## Bank failure
+<!-- ## Bank failure -->
 
-- Neth et al. (2013): Homo heuristics in the financial world: From risk management to managing uncertainty
+<!-- - Neth et al. (2013): Homo heuristics in the financial world: From risk management to managing uncertainty -->
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align='center'}
-knitr::include_graphics(c("images/nethtree.png"))
-```
+<!-- ```{r , fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align='center'} -->
+<!-- knitr::include_graphics(c("images/nethtree.png")) -->
+<!-- ``` -->
 
 <!-- --- &twocol -->
 
@@ -192,14 +185,16 @@ knitr::include_graphics(c("images/nethtree.png"))
 --- .class #id 
 ## Problem
 
-There is no off-the-shelf method to construct FFTs
+> - There is no off-the-shelf method to construct FFTs.
+> - Previous researchers have individually constructed their FFTs.
 
 ### Task
-- Create an easy-to-use R package that constructs, visualizes, and implements FFTs called `FFTrees`.
+> - Create an easy-to-use R package that constructs, visualizes, and implements FFTs.
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align='center', message = FALSE, echo = FALSE}
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center', message = FALSE, echo = FALSE}
 knitr::include_graphics(c("images/FFTrees_Logo.jpg"))
 ```
+
 
 --- .class #id 
 ## FFTrees
@@ -239,13 +234,13 @@ heart.fft <- FFTrees(formula = diagnosis ~.,
                      data.test = heart.test)
 ```
 
---- .class #id 
-## Evaluating a decision algorithm
+<!-- --- .class #id  -->
+<!-- ## Evaluating a decision algorithm -->
 
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align='center'}
-knitr::include_graphics(c("images/confusiontable.png"))
-```
+<!-- ```{r , fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align='center'} -->
+<!-- knitr::include_graphics(c("images/confusiontable.png")) -->
+<!-- ``` -->
 
 
 
@@ -256,14 +251,6 @@ knitr::include_graphics(c("images/confusiontable.png"))
 ```{r, message = FALSE, echo = TRUE}
 # Step 3: Summary statistics
 heart.fft
-```
-
---- .class #id 
-## Heart disease cue accuracies
-
-
-```{r eval = TRUE}
-plot(heart.fft, what = "cues", main = "Heart Disease")
 ```
 
 --- .class #id 
@@ -315,7 +302,10 @@ knitr::include_graphics(c("images/roc.png"))
 ## Heart Disease FFT | Tree 4
 
 ```{r, eval = TRUE, echo = FALSE, fig.align = "center", fig.width = 8, fig.height = 7}
-plot(heart.fft, main = "Heart Disease", decision.names = c("healthy", "sick"), data = "test")
+plot(heart.fft, 
+     main = "Heart Disease", 
+     decision.names = c("healthy", "sick"), 
+     data = "test")
 ```
 
 
@@ -364,56 +354,88 @@ plot(heart.fft, main = "Heart Disease",
 
 <!-- ``` -->
 
+
 --- .class #id 
+## Comparing FFTs to standard trees
+
+
+### How does the FFT created by FFTrees compare to a 'standard' decision tree created by rpart?
+
+
+--- &twocol
+
+*** =left
 ## Heart disease: rpart
 
 - 8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)
 
-```{r, out.width = "50%", echo = FALSE, fig.align = 'center'}
+```{r, out.width = "80%", echo = FALSE, fig.align = 'center'}
 heart.rpart <- rpart::rpart(diagnosis ~., data = heartdisease)
 plot(heart.rpart)
 text(heart.rpart)
 ```
 
 
---- .class #id 
+**** =right
 ## Heart disease: FFT
 
-- 3 cues (thal, cp, ca)
-- However, when applied to the data, only about 1.75 cues are even used on average. As a result, > 85% of the cue information is completely ignored.
+> - 3 cues (thal, cp, ca)
 
-```{r echo = FALSE, fig.align = 'center'}
-plot(heart.fft, stats = FALSE, decision.names = c("Healthy", "Diseased"))
+
+<!-- |     |  train|   test| -->
+<!-- |:----|------:|------:| -->
+<!-- |n    | 150.00| 153.00| -->
+<!-- |pci  |   0.87|   0.88| -->
+<!-- |mcu  |   1.87|   1.62| -->
+<!-- |acc  |   0.81|   0.80| -->
+<!-- |bacc |   0.79|   0.79| -->
+<!-- |sens |   0.63|   0.63| -->
+<!-- |spec |   0.95|   0.94| -->
+
+> - The FFT is very cheap to implement
+>    - Heart disease FFT: $75.91
+>    - Regression: $300 
+
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "70%", fig.align='center', message = FALSE, echo = FALSE}
+knitr::include_graphics(c("images/traintreestats.png"))
+```
+
+<!-- ```{r, eval = TRUE, fig.align = 'center', echo = FALSE} -->
+<!-- plot(heart.fft,  -->
+<!--      main = "Heart Disease",  -->
+<!--      decision.names = c("healthy", "sick"), -->
+<!--      stats = FALSE) -->
+<!-- ``` -->
+
+
+--- .class #id
+## Heart disease classification accuracy
+
+```{r, echo = FALSE,  fig.align = 'center', out.width = "80%", message = FALSE, results = "hide"}
+heart.sim <- data.frame(model = c(rep("FFT", 100),
+                                  rep("LR", 100),
+                                  rep("CART", 100)),
+                        data = c(rep("train", 300), rep("test", 300)),
+                        bacc = c(heart.fff$tree.sim$bacc.train,
+                                          heart.fff$lr.sim$bacc.train,
+                                          heart.fff$cart.sim$bacc.train,
+                                 heart.fff$tree.sim$bacc.test,
+                                          heart.fff$lr.sim$bacc.test,
+                                          heart.fff$cart.sim$bacc.test))
 ```
 
 
-<!-- --- .class #id  -->
-<!-- ## Heart disease classification accuracy -->
-
-<!-- ```{r, echo = FALSE,  fig.align = 'center', out.width = "80%", message = FALSE, results = "hide"} -->
-<!-- heart.sim <- data.frame(model = c(rep("FFT", 100),  -->
-<!--                                   rep("LR", 100),  -->
-<!--                                   rep("CART", 100)), -->
-<!--                         data = c(rep("train", 300), rep("test", 300)), -->
-<!--                         bacc = c(heart.fff$tree.sim$bacc.train, -->
-<!--                                           heart.fff$lr.sim$bacc.train, -->
-<!--                                           heart.fff$cart.sim$bacc.train, -->
-<!--                                  heart.fff$tree.sim$bacc.test, -->
-<!--                                           heart.fff$lr.sim$bacc.test, -->
-<!--                                           heart.fff$cart.sim$bacc.test)) -->
-<!-- ``` -->
-
-
-<!-- ```{r, echo = FALSE,  fig.align = 'center', fig.width = 10, fig.height = 7, message = FALSE, results = "hide"} -->
-<!-- yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(.6, 1), sortx = "s", main = "Simulation performance in Heart disease", ylab = "Balanced Accuracy (bacc)", yaxt = "n", gl.col = "white") -->
-<!-- axis(side = 2, at = seq(.6, 1, .1), las = 1) -->
-<!-- rect(-1000, -1000, 10000, 1000, col = "white", border = NA) -->
-<!-- grid() -->
-<!-- ``` -->
+```{r, echo = FALSE,  fig.align = 'center', fig.width = 10, fig.height = 7, message = FALSE, results = "hide"}
+yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(.6, 1), sortx = "s", main = "Simulation performance in Heart disease", ylab = "Balanced Accuracy (bacc)", yaxt = "n", gl.col = "white")
+axis(side = 2, at = seq(.6, 1, .1), las = 1)
+rect(-1000, -1000, 10000, 1000, col = "white", border = NA)
+grid()
+```
 
 
 
---- .class #id 
+--- .class #id
 ## Heart disease classification accuracy
 
 ```{r, echo = FALSE,  fig.align = 'center', fig.width = 10, fig.height = 7, message = FALSE, results = "hide"}
@@ -423,7 +445,7 @@ rect(4, -1000, 10000, 1000, col = "white", border = NA)
 grid()
 ```
 
---- .class #id 
+--- .class #id
 ## Heart disease classification accuracy
 
 
@@ -488,7 +510,7 @@ knitr::include_graphics(c("images/simulation.png"))
 ## Conclusions
 
 > - FFTrees makes it easy to develop simple, effective, transparent decision trees.
-> - Decision aids built with FFTrees can compete with complex, compensatory algorithms in prediction.
+> - FFTrees can compete with complex decision algorithms, even Random Forests and Support Vector machines, in pure prediction.
 
 
 ## Next steps
@@ -496,8 +518,6 @@ knitr::include_graphics(c("images/simulation.png"))
 
 > - Speed up code with c++ or Julia.
 > - Include *cue costs* into algorithm.
->    - Heart disease FFT: $75.91
->    - Regression: $300 
 > - Quantify when and how a tree **fails** when it is applied to data over time.
 
 *** =right
@@ -521,5 +541,14 @@ plot(heart.fft,
 
 ```{r, fig.width = 12, fig.height = 7, fig.align = 'center'}
 plot(heart.fff)
+```
+
+
+--- .class #id 
+## Heart disease cue accuracies
+
+
+```{r eval = TRUE}
+plot(heart.fft, what = "cues", main = "Heart Disease")
 ```
 

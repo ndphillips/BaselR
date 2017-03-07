@@ -28,9 +28,6 @@ biglogo : FFTrees_Logo.jpg
 
 <img src="images/crowdedemergency.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" style="display: block; margin: auto;" />
 
-<!-- As the city’s principal public hospital, Cook County was the place of last resort for the hundreds of thousands of Chicagoans without health insurance. Resources were stretched to the limit. The hospital’s cavernous wards were built for another century. There were no private rooms, and patients were separated by flimsy plywood dividers. There was no cafeteria or private telephone—just a payphone for everyone at the end of the hall. In one possibly apocryphal story, doctors once trained a homeless man to do routine lab tests because there was no one else available. -->
-
-<!-- > But the Emergency Department (the ED) seemed to cry out for special attention. The rooms were jammed. A staggering 250,000 patients came through the ED every year. How do you figure out who needs what? How do you figure out how to direct resources to those who need them the most?” -->
 
 
 
@@ -49,23 +46,20 @@ biglogo : FFTrees_Logo.jpg
 
 ### Decision task
 
-> - Send people with heart attacks to the coronary care bed, and healthy patients to a normal bed.
+> - Send true heart attacks to the coronary care bed, and true healthy patients to a normal bed.
 
 ### Multiple, uncertain measures
 
-> - Blood pressure, Stethescope,
+> - Electrocardiogram (ECG), Blood pressure, Stethescope,
 > - Questions: How long? How much? During exercise? History? Cholesterol? Drugs? etc.
-> - Electrocardiogram (ECG) reading.
+
 
 
 --- .class #id 
 
 ## Decisions by intuition was not working
 
-### Study: How much do doctors agree on diagnoses?
-
-> - Asked doctors to estimate from 0 to 100 the probability of a heart attack of 20 separate patients.
-
+> - Task: Estimate from 0 to 100 the probability of a heart attack of 20 separate patients.
 
 <img src="images/medicalhistory.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="30%" style="display: block; margin: auto;" />
 
@@ -81,22 +75,16 @@ biglogo : FFTrees_Logo.jpg
 
 ## Solution
 
-- A decision tree developed by a cardiologist named Lee Goldman.
+- A fast and frugal decision tree (FFT) developed by a cardiologist named Lee Goldman.
 
-<img src="images/cooktree.gif" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="30%" style="display: block; margin: auto;" />
+<img src="images/cooktree.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="20%" style="display: block; margin: auto;" />
 
 
-### Why use a decision tree?
+### Why use a fast and frugal tree?
 
 > - Speed, Easy of understanding and implementation
 
-
-
-
-
---- &twocol
-
-*** =left
+--- 
 
 ## The Cook hospital decision tree
 
@@ -104,45 +92,54 @@ biglogo : FFTrees_Logo.jpg
 
 ### Results
 
-> - Tree dramatically outperformed the doctor's clinical judgments and resulted in far fewer false-positives and huge cost savings
-
+> - Doctor's intuitive accuracy: 75-90%
+> - Decision tree accuracy: 95%
+> - Tree had far fewer false-positives and huge cost savings
 > - To this day, the tree is still used at the hospital.
 
-*** =right
-
-<img src="images/goldman.jpg" title="Dr. Lee Goldman" alt="Dr. Lee Goldman" width="75%" style="display: block; margin: auto;" />
 
 
 ---  &twocol
 
 *** =left
-## Fast and frugal decision trees (FFT)
+## Standard decision tree
 
-> - A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree.
+> - Standard decision trees created by unrestricted algorithms can become very complex
 
-> - In an FFT, each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
+> - Complexity -> High costs, Difficult to understand, prone to overfitting. 
 
-> - FFTs are even faster and require less information than non-FFT trees.
+<img src="images/complextree.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="100%" style="display: block; margin: auto;" />
 
 *** =right
 
-<img src="images/traintreestats.png" title="plot of chunk test" alt="plot of chunk test" width="100%" style="display: block; margin: auto;" />
+## Fast and Frugal tree
 
---- .class #id 
+> - A fast and frugal decision tree (FFT) is a very simple, highly restricted decision tree where each node has exactly two branches, where at least one branch is an exit branch (Martignon et al., 2008).
 
-## Depression Tree
+> - FFTs -> Cheap, easy to understand, and rarely overfit.
 
-- Jenny et al. (2013): Simple rules for detecting depression
 
-<img src="images/depressiontree.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="40%" style="display: block; margin: auto;" />
+<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="60%" style="display: block; margin: auto;" />
 
---- .class #id 
+<!-- --- .class #id  -->
 
-## Bank failure
+<!-- ## Depression Tree -->
 
-- Neth et al. (2013): Homo heuristics in the financial world: From risk management to managing uncertainty
+<!-- - Jenny et al. (2013): Simple rules for detecting depression -->
 
-<img src="images/nethtree.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="40%" style="display: block; margin: auto;" />
+<!-- ```{r , fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align='center'} -->
+<!-- knitr::include_graphics(c("images/depressiontree.png")) -->
+<!-- ``` -->
+
+<!-- --- .class #id  -->
+
+<!-- ## Bank failure -->
+
+<!-- - Neth et al. (2013): Homo heuristics in the financial world: From risk management to managing uncertainty -->
+
+<!-- ```{r , fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align='center'} -->
+<!-- knitr::include_graphics(c("images/nethtree.png")) -->
+<!-- ``` -->
 
 <!-- --- &twocol -->
 
@@ -172,12 +169,14 @@ biglogo : FFTrees_Logo.jpg
 --- .class #id 
 ## Problem
 
-There is no off-the-shelf method to construct FFTs
+> - There is no off-the-shelf method to construct FFTs.
+> - Previous researchers have individually constructed their FFTs.
 
 ### Task
-- Create an easy-to-use R package that constructs, visualizes, and implements FFTs called `FFTrees`.
+> - Create an easy-to-use R package that constructs, visualizes, and implements FFTs.
 
-<img src="images/FFTrees_Logo.jpg" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="40%" style="display: block; margin: auto;" />
+<img src="images/FFTrees_Logo.jpg" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="30%" style="display: block; margin: auto;" />
+
 
 --- .class #id 
 ## FFTrees
@@ -203,20 +202,20 @@ head(heartdisease)
 ```
 
 ```
-##   age sex cp trestbps chol fbs     restecg thalach exang oldpeak slope ca
-## 1  63   1 ta      145  233   1 hypertrophy     150     0     2.3  down  0
-## 2  67   1  a      160  286   0 hypertrophy     108     1     1.5  flat  3
-## 3  67   1  a      120  229   0 hypertrophy     129     1     2.6  flat  2
-## 4  37   1 np      130  250   0      normal     187     0     3.5  down  0
-## 5  41   0 aa      130  204   0 hypertrophy     172     0     1.4    up  0
-## 6  56   1 aa      120  236   0      normal     178     0     0.8    up  0
-##     thal diagnosis
-## 1     fd         0
-## 2 normal         1
-## 3     rd         1
-## 4 normal         0
-## 5 normal         0
-## 6 normal         0
+##     age sex cp trestbps chol fbs restecg thalach exang oldpeak slope ca
+## 165  48   1 np      124  255   1  normal     175     0     0.0    up  2
+## 264  44   1 np      120  226   0  normal     169     0     0.0    up  0
+## 244  61   1 ta      134  234   0  normal     145     0     2.6  flat  2
+## 47   51   1 np      110  175   0  normal     123     0     0.6    up  0
+## 15   52   1 np      172  199   1  normal     162     0     0.5    up  0
+## 226  34   0 aa      118  210   0  normal     192     0     0.7    up  0
+##       thal diagnosis
+## 165 normal         0
+## 264 normal         0
+## 244 normal         1
+## 47  normal         0
+## 15      rd         0
+## 226 normal         0
 ```
 
 --- .class #id 
@@ -237,11 +236,13 @@ heart.fft <- FFTrees(formula = diagnosis ~.,
                      data.test = heart.test)
 ```
 
---- .class #id 
-## Evaluating a decision algorithm
+<!-- --- .class #id  -->
+<!-- ## Evaluating a decision algorithm -->
 
 
-<img src="images/confusiontable.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="60%" style="display: block; margin: auto;" />
+<!-- ```{r , fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align='center'} -->
+<!-- knitr::include_graphics(c("images/confusiontable.png")) -->
+<!-- ``` -->
 
 
 
@@ -257,27 +258,16 @@ heart.fft
 
 ```
 ## [1] "7 FFTs using up to 4 of 13 cues"
-## [1] "FFT #4 uses 3 cues {thal,cp,ca} with the following performance:"
+## [1] "FFT #5 uses 4 cues {thal,cp,oldpeak,ca} with the following performance:"
 ##       train   test
 ## n    150.00 153.00
-## pci    0.88   0.88
-## mcu    1.74   1.73
-## acc    0.80   0.82
-## bacc   0.80   0.82
-## sens   0.82   0.88
-## spec   0.79   0.76
+## pci    0.86   0.87
+## mcu    1.91   1.76
+## acc    0.83   0.76
+## bacc   0.84   0.76
+## sens   0.89   0.86
+## spec   0.79   0.66
 ```
-
---- .class #id 
-## Heart disease cue accuracies
-
-
-
-```r
-plot(heart.fft, what = "cues", main = "Heart Disease")
-```
-
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png)
 
 --- .class #id 
 ## Heart Disease FFT
@@ -289,7 +279,7 @@ plot(heart.fft,
      stats = FALSE)
 ```
 
-<img src="figure/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -305,39 +295,39 @@ plot(heart.fft,
 
 --- .class #id 
 ## Heart Disease FFT | Training
-<img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT | Prediction
 
-<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Heart Disease FFT | ROC
 
-<img src="images/roc.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="80%" style="display: block; margin: auto;" />
+<img src="images/roc.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="80%" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT | Tree 4
 
-<img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
 
 
 
 --- .class #id 
 ## Heart Disease FFT | Tree 3
 
-<img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
 
 --- .class #id
 ## Heart Disease FFT | Tree 6
 
-<img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
 
 <!-- --- .class #id  -->
 <!-- ## How do FFTs compare to regression and CART? -->
@@ -365,85 +355,75 @@ plot(heart.fft,
 
 <!-- ``` -->
 
+
 --- .class #id 
+## Comparing FFTs to standard trees
+
+
+### How does the FFT created by FFTrees compare to a 'standard' decision tree created by rpart?
+
+
+--- &twocol
+
+*** =left
 ## Heart disease: rpart
 
 - 8 cues (thal, cp, oldpeak, ca, age, exang, thalach, chol)
 
-<img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="50%" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="80%" style="display: block; margin: auto;" />
 
 
---- .class #id 
+**** =right
 ## Heart disease: FFT
 
-- 3 cues (thal, cp, ca)
-- However, when applied to the data, only about 1.75 cues are even used on average. As a result, > 85% of the cue information is completely ignored.
-
-<img src="figure/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" />
+> - 3 cues (thal, cp, ca)
 
 
-<!-- --- .class #id  -->
-<!-- ## Heart disease classification accuracy -->
+<!-- |     |  train|   test| -->
+<!-- |:----|------:|------:| -->
+<!-- |n    | 150.00| 153.00| -->
+<!-- |pci  |   0.87|   0.88| -->
+<!-- |mcu  |   1.87|   1.62| -->
+<!-- |acc  |   0.81|   0.80| -->
+<!-- |bacc |   0.79|   0.79| -->
+<!-- |sens |   0.63|   0.63| -->
+<!-- |spec |   0.95|   0.94| -->
 
-<!-- ```{r, echo = FALSE,  fig.align = 'center', out.width = "80%", message = FALSE, results = "hide"} -->
-<!-- heart.sim <- data.frame(model = c(rep("FFT", 100),  -->
-<!--                                   rep("LR", 100),  -->
-<!--                                   rep("CART", 100)), -->
-<!--                         data = c(rep("train", 300), rep("test", 300)), -->
-<!--                         bacc = c(heart.fff$tree.sim$bacc.train, -->
-<!--                                           heart.fff$lr.sim$bacc.train, -->
-<!--                                           heart.fff$cart.sim$bacc.train, -->
-<!--                                  heart.fff$tree.sim$bacc.test, -->
-<!--                                           heart.fff$lr.sim$bacc.test, -->
-<!--                                           heart.fff$cart.sim$bacc.test)) -->
+> - The FFT is very cheap to implement
+>    - Heart disease FFT: $75.91
+>    - Regression: $300 
+
+
+<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="70%" style="display: block; margin: auto;" />
+
+<!-- ```{r, eval = TRUE, fig.align = 'center', echo = FALSE} -->
+<!-- plot(heart.fft,  -->
+<!--      main = "Heart Disease",  -->
+<!--      decision.names = c("healthy", "sick"), -->
+<!--      stats = FALSE) -->
 <!-- ``` -->
 
 
-<!-- ```{r, echo = FALSE,  fig.align = 'center', fig.width = 10, fig.height = 7, message = FALSE, results = "hide"} -->
-<!-- yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(.6, 1), sortx = "s", main = "Simulation performance in Heart disease", ylab = "Balanced Accuracy (bacc)", yaxt = "n", gl.col = "white") -->
-<!-- axis(side = 2, at = seq(.6, 1, .1), las = 1) -->
-<!-- rect(-1000, -1000, 10000, 1000, col = "white", border = NA) -->
-<!-- grid() -->
-<!-- ``` -->
-
-
-
---- .class #id 
-## Heart disease classification accuracy
-
-
-```
-## Error in yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(0.6, : object 'heart.sim' not found
-```
-
-```
-## Error in axis(side = 2, at = seq(0.6, 1, 0.1), las = 1): plot.new has not been called yet
-```
-
-```
-## Error in rect(4, -1000, 10000, 1000, col = "white", border = NA): plot.new has not been called yet
-```
-
-```
-## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
-```
-
---- .class #id 
+--- .class #id
 ## Heart disease classification accuracy
 
 
 
-```
-## Error in yarrr::pirateplot(bacc ~ model + data, data = heart.sim, ylim = c(0.6, : object 'heart.sim' not found
-```
 
-```
-## Error in axis(side = 2, at = seq(0.6, 1, 0.1), las = 1): plot.new has not been called yet
-```
+<img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
-```
-## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
-```
+
+
+--- .class #id
+## Heart disease classification accuracy
+
+<img src="assets/fig/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" />
+
+--- .class #id
+## Heart disease classification accuracy
+
+
+<img src="assets/fig/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -466,24 +446,24 @@ Table: 5 of the 10 prediction datasets
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_a.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="90%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_b.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="90%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Aggregate simulation prediction results
 
-<img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulationagg_c.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="90%" style="display: block; margin: auto;" />
 
 
 --- .class #id 
 ## Simulation prediction results by dataset
 
-<img src="images/simulation.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="90%" style="display: block; margin: auto;" />
+<img src="images/simulation.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="90%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -492,7 +472,7 @@ Table: 5 of the 10 prediction datasets
 ## Conclusions
 
 > - FFTrees makes it easy to develop simple, effective, transparent decision trees.
-> - Decision aids built with FFTrees can compete with complex, compensatory algorithms in prediction.
+> - FFTrees can compete with complex decision algorithms, even Random Forests and Support Vector machines, in pure prediction.
 
 
 ## Next steps
@@ -500,18 +480,16 @@ Table: 5 of the 10 prediction datasets
 
 > - Speed up code with c++ or Julia.
 > - Include *cue costs* into algorithm.
->    - Heart disease FFT: $75.91
->    - Regression: $300 
 > - Quantify when and how a tree **fails** when it is applied to data over time.
 
 *** =right
 
-<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="100%" style="display: block; margin: auto;" />
+<img src="images/traintreestats.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="100%" style="display: block; margin: auto;" />
 
 --- .class #id 
 ## Questions?
 
-<img src="figure/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" style="display: block; margin: auto;" />
 
 
 --- .class #id 
@@ -522,5 +500,17 @@ Table: 5 of the 10 prediction datasets
 plot(heart.fff)
 ```
 
-<img src="figure/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" />
+
+
+--- .class #id 
+## Heart disease cue accuracies
+
+
+
+```r
+plot(heart.fft, what = "cues", main = "Heart Disease")
+```
+
+![plot of chunk unnamed-chunk-33](assets/fig/unnamed-chunk-33-1.png)
 
